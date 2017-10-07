@@ -1,5 +1,2 @@
 #! /bin/bash
-	filename=$HOME/Pictures/screenshots/$(date +%Y-%m-%d-%H-%M-%S).png
-
-	scrot -s $filename 
-	xclip -selection clipboard -t image/png $filename
+scrot -selection '%Y-%m-%d-%H-%M-%S.png' -e 'xclip -selection clipboard -t image/png $f && mv $f ~/Pictures/screenshots/'
