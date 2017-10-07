@@ -1,0 +1,4 @@
+#!/bin/sh
+#Switch between keyboard layouts using setxkbmap
+
+setxkbmap -model pc105 -layout us,es -option grp:alt_shift_toggle

@@ -1,0 +1,274 @@
+###########
+# General #
+###########
+
+# Using Super instead of alt 
+set $mod Mod4
+
+#Font 
+font pango:Dina 9 
+
+#############
+# Variables #
+#############
+
+set_from_resource $darkblack color0 #282c34
+set_from_resource $black color8 #3e4454
+set_from_resource $darkred color1 #e06c75
+set_from_resource $red color9 #be5046
+set_from_resource $darkgreen color2 #98c370
+set_from_resource $green color10 #98c370
+set_from_resource $darkblue color4 #61afef
+set_from_resource $blue color12 #61afef
+set_from_resource $darkmagenta color5 #c678dd
+set_from_resource $magenta color13 #c678dd
+set_from_resource $darkcyan color6 #56b6c2
+set_from_resource $cyan color14 #56b6c2
+set_from_resource $darkwhite color7 #abb2bf
+set_from_resource $white color15 #5c6370
+
+set_from_resource $background backgrkound #282c34
+set_from_resource $foreground foreground #abb2bf
+
+set $ws1  "1"
+set $ws2  "2"
+set $ws3  "3"
+set $ws4  "4"
+set $ws5  "5"
+set $ws6  "6"
+set $ws7  "7"
+set $ws8  "8"
+set $ws9  "9"
+set $ws10 "10"
+
+##########
+# Colors #
+##########
+
+#						BORDER		BACKGROUND	TEXT		INDICATOR
+client.focused			$darkcyan	$darkcyan	$black		$green
+client.unfocused		$darkwhite	$darkwhite	$white		$darkwhite
+client.focused_inactive	$darkwhite	$darkwhite	$white		$darkwhite
+client.urgent			$red		$red		$white		$red
+
+################
+# Key Bindings #
+################
+
+# Start a terminal
+bindsym $mod+Return exec i3-sensible-terminal
+
+# Kill focused window
+bindsym $mod+Shift+q kill
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# Start dmenu
+# bindsym $mod+d exec dmenu_run
+bindsym $mod+d exec "dmenu_run -y 8 -x 12 -h 24 -w 1342 -fn 'Dina-8' -nb '#282c34' -sb '#3e4452' -nf '#abb2bf' -sf '#abb2bf'"
+
+# Change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# Alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# Move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# Alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# Split in vertical orientation
+bindsym $mod+v split v
+
+# Split in horizontal orientation
+bindsym $mod+Shift+v split h
+
+# Enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# Change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# Toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# Change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# Focus the parent container
+bindsym $mod+a focus parent
+
+# Focus the child container
+#bindsym $mod+d focus child
+
+# Reload the configuration file
+bindsym $mod+Shift+c reload
+
+# Restart i3 inplace (preserves your layout/session, can be used to upgrde i3)
+bindsym $mod+Shift+r restart
+
+# Scrot
+bindsym --release Print exec $HOME/.bin/scrot
+bindsym --release Shift+Print exec $HOME/.bin/scrot-area 
+
+#bindsym Print exec escrotum --clipboard --select --selection-delay 50 $screenshot_file
+#bindsym Shift+Print exec escrotum --clipboard --select --selection-delay 50 $screenshot_file
+
+# pcmanfm 
+bindsym $mod+p exec --no-startup-id pcmanfm -n
+# Chromium
+bindsym $mod+c exec --no-startup-id chromium
+
+##############
+# Workspaces #
+##############
+
+# Allow workspaces back and forth
+workspace_auto_back_and_forth yes
+
+# Switch to workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
+bindsym $mod+Tab workspace back_and_forth
+
+# Move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace number $ws1
+bindsym $mod+Shift+2 move container to workspace number $ws2
+bindsym $mod+Shift+3 move container to workspace number $ws3
+bindsym $mod+Shift+4 move container to workspace number $ws4
+bindsym $mod+Shift+5 move container to workspace number $ws5
+bindsym $mod+Shift+6 move container to workspace number $ws6
+bindsym $mod+Shift+7 move container to workspace number $ws7
+bindsym $mod+Shift+8 move container to workspace number $ws8
+bindsym $mod+Shift+9 move container to workspace number $ws9
+bindsym $mod+Shift+0 move container to workspace number $ws10
+
+# Assign clients to workspaces
+
+assign [class="^google-chrome$"] → $ws1
+assign [class="^Firefox$"] → $ws2
+assign [class="^Chromium$" window_role="^browser$"] → $ws2
+assign [class="^Navigator$"] → $ws2
+assign [class="^Nautilus$"] → $ws4
+assign [class="^Termite$" instance="^playlist$"] → $ws5
+assign [class="^Termite$" instance="^visualizer$"] → $ws5
+assign [class="^Termite$" instance="^media_library$"] → $ws5
+assign [class="^Termite$" instance="^weechat$"] → $ws6
+assign [class="^Termite$" instance="^mutt$"] → $ws6
+assign [class="^Termite$" instance="^newsbeuter$"] → $ws6
+
+for_window [class="^Chromium$" window_role="^pop-up$"] floating enable 
+for_window [class="^Steam$" title="Friends"] floating enable 
+for_window [class="^Steam$" title=" - Chat"] floating enable 
+for_window [class="^Steam$" title="^Steam Guard$"] floating enable 
+
+#########
+# Modes #
+#########
+
+# Resize window (you can also use the mouse for that)
+set $mode_resize resize
+bindsym $mod+r mode "$mode_resize"
+mode "$mode_resize" {
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
+
+# same bindings, but for the arrow keys
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+# System Menu
+set $sysmenu "[p]oweroff  re[b]oot  [r]eload [s]uspend  [l]ogout"
+bindsym $mod+Delete      mode $sysmenu
+
+mode $sysmenu {
+    bindsym r         restart
+    bindsym l         exit
+    bindsym p         exec shutdown -P now
+    bindsym b         exec shutdown -r now
+    bindsym s	      exec systemctl suspend
+    bindsym Return    mode "default"
+    bindsym Escape    mode "default"
+}
+
+
+#######
+# Bar #
+#######
+
+#bar {
+#   status_command $HOME/.bin/polybar
+#
+#}
+
+exec_always --no-startup-id $HOME/.bin/polybar
+
+###################
+# Multimedia Keys #
+###################
+
+# Pulse Audio controls
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +2% #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -2% #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+
+# MPC
+bindsym XF86AudioPrev exec mpc prev
+bindsym XF86AudioNext exec mpc next
+bindsym XF86AudioPlay exec mpc toggle
+bindsym XF86AudioStop exec mpc stop 
+
+# Sreen brightness controls
+bindsym XF86MonBrightnessUp exec xbacklight +2
+bindsym XF86MonBrightnessDown exec xbacklight -2 
+
+###########
+# i3-Gaps #
+###########
+
+# Borders 
+for_window [class="^.*"] border pixel 3
+
+# Set inner/outer gaps
+gaps inner 12
+gaps outer 0
+
+# Smart gaps (gaps used if only more than one container on the workspace)
+# smart_gaps on
+
+# Smart borders (draw borders around container only if it is not the only container on this workspace) 
+smart_borders on
+

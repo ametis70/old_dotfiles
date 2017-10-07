@@ -1,0 +1,28 @@
+#!/usr/bin/env sh
+
+# Terminate already running bar instances
+killall -q polybar
+
+# Wait until the processes have been shut down
+while pgrep -x polybar > /dev/null; do sleep 1; done
+
+# Launch bar1 and bar2
+polybar invisible &
+
+sleep 1 
+
+polybar top & 
+
+sleep 1 
+
+echo "Bars launched..."
+
+PIDINVISIBLE=`xdotool search --name "polybar-invisible_eDP-1" | head -n1`
+PIDTOP=`xdotool search --name "polybar-top_eDP-1" | head -n1`
+
+#echo $PIDINVISIBLE
+#echo $PIDTOP
+
+xdotool windowreparent $PIDTOP $PIDINVISIBLE
+xdotool windowmove --relative --sync $PIDINVISIBLE 0 8
+xdotool windowmove --relative --sync $PIDTOP 0 8

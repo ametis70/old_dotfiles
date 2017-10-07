@@ -1,0 +1,72 @@
+! special
+*.foreground:   #ABB2BF
+*.background:   #282C34
+*.cursorColor:  #ABB2BF
+
+! black
+*.color0:       #282C34
+*.color8:       #3E4452
+
+! red
+*.color1:       #E06C75
+*.color9:       #BE5046
+
+! green
+*.color2:       #98C379
+*.color10:      #98C379
+
+! yellow
+*.color3:       #E5C07B
+*.color11:      #D19A66
+
+! blue
+*.color4:       #61AFEF
+*.color12:      #61AFEF
+
+! magenta
+*.color5:       #C678DD
+*.color13:      #C678DD
+
+! cyan
+*.color6:       #56B6C2
+*.color14:      #56B6C2
+
+! white
+*.color7:       #ABB2BF
+*.color15:      #5C6370
+
+!!!!!!!!!
+! URxvt !
+!!!!!!!!!
+
+! Disable scrollbar
+URxvt.scrollBar: 0
+
+! Cursor blink
+URxvt.cursorBlink: 1
+
+! Font
+URxvt.font: xft:Dina:size=9
+URxvt.letterSpace: 0
+
+! Clickable links
+URxvt.perl-ext-common: default,matcher
+URxvt.url-launcher: /usr/bin/xdg-open
+URxvt.matcher.button: 1
+
+! Border 
+URxvt.internalBorder:  12
+
+! Transparency
+
+! fake
+!urxvt*transparent: true
+!urxvt*shading: 10
+
+urxvt*depth: 32
+
+! Map CTRL + arrow keys
+URxvt.keysym.Control-Up:   \033[1;5A
+URxvt.keysym.Control-Down:    \033[1;5B
+URxvt.keysym.Control-Left:    \033[1;5D
+URxvt.keysym.Control-Right:    \033[1;5C
