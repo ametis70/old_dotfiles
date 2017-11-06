@@ -1,6 +1,6 @@
 [[ -f ~/.Xdefaults ]] && xrdb -merge -I $HOME ~/.Xdefaults
 
-export TERMINAL=rxvt-unicode
+export TERMINAL=urxvt
 
 # Autostart
 pcmanfm -d &

@@ -141,13 +141,13 @@ interface = wlp3s0
 interval = 3.0
 ;udspeed-minwidth = 0
 
-format-connected = <ramp-signal> <label-connected>
+format-connected = <ramp-signal><label-connected>
 format-connected-background = ${colors.background}
-format-connected-prefix = 
 format-connected-prefix-foreground = ${colors.green}
 format-connected-prefix-background = ${colors.background-alt}
 format-connected-prefix-offset = -6
-label-connected = "%essid% "
+label-connected = " %essid% "
+label-connected-background = ${colors.background}
 
 
 format-disconnected = <label-disconnected>
@@ -162,35 +162,34 @@ ramp-signal-3 = " %{F#98c379}%{F-} "
 ramp-signal-4 = " %{F#98c379}%{F-} "
 ramp-signal-background = ${colors.background-alt}
 
+
 [module/date]
 type = internal/date
-label = "%{B#3E4452}  %{B-} %date% %{B#3E4452}  %{B-} %time% "
+label = "%{B#3E4452}  %{B-}%{B#282C34} %date% %{B-}  %{B#3E4452}  %{B-}%{B#282C34} %time% %{B-}"
 ;label = %{F#ABB2BF}%{F-} %time%
 date = %m/%d
 time = %H:%M
 interval = 5
-format-background = ${colors.background}
+label-background = ${colors.background}
 
 [module/volume]
 type = internal/volume
 
-label-volume = "%{B#3E4452}%{F#98C379}  %{F-}%{B-} %percentage%% "
-label-volume-background = ${colors.background}
-label-muted = "%{B#3E4452}%{F#E06C75}  %{F-}%{B-} %percentage%% "
-format-muted-background= ${colors.background}
-
+label-volume = "%{B#3E4452}%{F#98C379}  %{F-}%{B-}%{B#282C34} %percentage%% %{B-}"
+label-muted = "%{B#3E4452}%{F#E06C75}  %{F-}%{B-}%{B#282C34} %percentage%% %{B-}"
 
 [module/battery]
 type = internal/battery
 full-at =  97
 time-format = %H:%M
 
-format-charging = <animation-charging> <label-charging>
-label-charging = "%{B#282C34}%percentage%% %{B-}"
-label-full = "%{B#282C34} %percentage%% %{B-}"
+format-charging = <animation-charging><label-charging>
+label-charging = "%{B#282C34} %percentage%% %{B-}"
+label-full = "%{B#282C34} %percentage%%%{B-}"
 
-format-discharging = <ramp-capacity> <label-discharging>
-label-discharging = "%{B#282C34}%percentage%% %{B-}"
+
+format-discharging = <ramp-capacity><label-discharging>
+label-discharging = "%{B#282C34} %percentage%% %{B-}"
 
 format-full = <label-full>
 format-full-prefix = "%{B#3E4452}%{F#98c379}  %{F-}%{B-}"
