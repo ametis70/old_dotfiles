@@ -33,4 +33,6 @@ echo pacman -Syu \
 	`# Printing` cups cups-pdf gtk3-print-backends \
 	`# zeroconf` avahi nss-mdns \
 	`# systray` stalonetray \
-	`# notifications` dunst
+	`# Notifications` dunst \
+	`# Virtual Machines` qemu \
+	`# Samba` samba 

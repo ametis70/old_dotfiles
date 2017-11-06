@@ -6,6 +6,10 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 Plug 'joshdick/onedark.vim'
 Plug 'sheerun/vim-polyglot'
+Plug 'othree/yajs.vim'
+Plug 'othree/javascript-libraries-syntax.vim'
+Plug 'jparise/vim-graphql'
+Plug 'styled-components/vim-styled-components'
 Plug 'itchyny/lightline.vim'
 Plug 'sjl/gundo.vim'
 Plug 'airblade/vim-gitgutter'
@@ -68,7 +72,7 @@ nnoremap <leader><space> :nohlsearch<CR>
 " Folding
 nnoremap <space> za
 set foldenable			" Enable folding
-set foldlevelstart=1	" Fold almost everything by default
+set foldlevelstart=3	" Fold some things by default
 set foldcolumn=2        " Add a fold column
 set foldmethod=indent  
 set foldopen=block,hor,insert,jump,mark,percent,quickfix,search,tag,undo

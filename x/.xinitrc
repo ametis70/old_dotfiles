@@ -3,6 +3,7 @@
 export TERMINAL=rxvt-unicode
 
 # Autostart
+pcmanfm -d &
 dunst &
 compton --config $HOME/.config/compton/compton.conf &
 

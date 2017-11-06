@@ -7,7 +7,7 @@ This are my _dotfiles_ for my Arch Linux setup running in my laptop. To manage t
 stow nvim
 ```
 
-Assuming that this repository will be at `$HOME/dotfiles`, the command above will symlink the files in the nvim folder preserving the same folder structure in the parent folder($HOME, in this case).
+Assuming that this repository will be at `$HOME/dotfiles`, the command above will symlink the files in the nvim folder (in the repository) preserving the folder structure to the parent folder from which the command was issued(`$HOME`, in this case).
 
 To remove the symlink, use the `-D` switch. ( `stow -D nvim` for instance )
 

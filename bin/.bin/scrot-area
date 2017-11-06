@@ -1,2 +1,2 @@
 #! /bin/bash
-scrot -selection '%Y-%m-%d-%H-%M-%S.png' -e 'xclip -selection clipboard -t image/png $f && mv $f ~/Pictures/screenshots/'
+scrot -d 0.1 -selection '%Y-%m-%d-%H-%M-%S.png' -e 'xclip -selection clipboard -t image/png $f && mv $f ~/Pictures/screenshots/'

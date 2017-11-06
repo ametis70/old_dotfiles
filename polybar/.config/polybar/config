@@ -74,6 +74,7 @@ wm-restack = i3
 ;dim-value = 0.2
 
 [bar/invisible]
+monitor = ${env:MONITOR:eDP-1}
 override-redirect = false
 height = 32
 background = ${colors.transparency}
@@ -88,7 +89,7 @@ type = custom/script
 [module/i3]
 type = internal/i3
 index-sort = true
-pin-workspaces = true
+pin-workspaces = false
 wrapping-scroll = true
 ;reverse-scroll = false
 ;enable-scroll = false
@@ -128,8 +129,10 @@ label-urgent-foreground = ${colors.background}
 
 ;label-visible = %icon%
 label-visible = %name%
+label-visible-padding= 1
 label-visible-foreground = ${colors.foreground}
-label-visible-backrgound = ${colors.background}
+label-visible-background = ${colors.background-alt}
+label-visible-underline = ${colors.green}
 
 
 [module/wifi]
@@ -184,13 +187,13 @@ time-format = %H:%M
 
 format-charging = <animation-charging> <label-charging>
 label-charging = "%{B#282C34}%percentage%% %{B-}"
-label-full = "%{B#282C34}%percentage%% %{B-}"
+label-full = "%{B#282C34} %percentage%% %{B-}"
 
 format-discharging = <ramp-capacity> <label-discharging>
 label-discharging = "%{B#282C34}%percentage%% %{B-}"
 
 format-full = <label-full>
-format-full-prefix = "%{B#3E4452}%{F#98c379}  %{F-}%{B-}"
+format-full-prefix = "%{B#3E4452}%{F#98c379}  %{F-}%{B-}"
 format-full-prefix-foreground = #666
 format-full-background = ${colors.background}
 

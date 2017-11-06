@@ -156,6 +156,9 @@ bindsym $mod+9 workspace $ws9
 bindsym $mod+0 workspace $ws10
 bindsym $mod+Tab workspace back_and_forth
 
+# Move workspace one monitor to the right
+bindsym $mod+Shift+Tab move workspace to output right
+
 # Move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace number $ws1
 bindsym $mod+Shift+2 move container to workspace number $ws2
