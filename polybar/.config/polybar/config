@@ -149,9 +149,8 @@ format-connected-prefix-offset = -6
 label-connected = " %essid% "
 label-connected-background = ${colors.background}
 
-
 format-disconnected = <label-disconnected>
-label-disconnected = "%{B#3E4452}%{F#be5046}  %{F-}%{B-} not connected "
+label-disconnected = "%{B#3E4452}%{F#be5046}  %{F-}%{B-}%{B#282C34} not connected %{B-}"
 label-disconnected-foreground = ${colors.foreground}
 label-disconnected-background = ${colors.background}
 
@@ -185,7 +184,7 @@ time-format = %H:%M
 
 format-charging = <animation-charging><label-charging>
 label-charging = "%{B#282C34} %percentage%% %{B-}"
-label-full = "%{B#282C34} %percentage%%%{B-}"
+label-full = "%{B#282C34} %percentage%% %{B-}"
 
 
 format-discharging = <ramp-capacity><label-discharging>

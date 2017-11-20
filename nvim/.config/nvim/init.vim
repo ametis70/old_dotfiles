@@ -5,6 +5,7 @@ set nocompatible
 call plug#begin('~/.local/share/nvim/plugged')
 
 Plug 'joshdick/onedark.vim'
+Plug 'gioele/vim-autoswap' "Requires wmctrl
 Plug 'sheerun/vim-polyglot'
 Plug 'othree/yajs.vim'
 Plug 'othree/javascript-libraries-syntax.vim'
@@ -45,7 +46,7 @@ colorscheme onedark
 let mapleader=","		" Leader is comma
 set encoding=utf-8		" Set encoding
 set ffs=unix,dos,mac
-set title				" Change the terminal's title
+set title titlestring=	" Change the terminal's title 
 set number              " Show line numbers
 set cursorline          " Highlight current line
 set showcmd             " Show command in bottom bar
