@@ -1,7 +1,7 @@
 # ianmethyst's dots
 ![Desktop screneshot](https://raw.githubusercontent.com/ianmethyst/dotfiles/master/screenshot.png)
 
-This are my _dotfiles_ for my Arch Linux setup running in my laptop. To manage these I use [GNU Stow](https://www.gnu.org/software/stow/) as follows:
+These are my _dotfiles_ for my Arch Linux setup running in my laptop. To manage these I use [GNU Stow](https://www.gnu.org/software/stow/) as follows:
 
 ```
 stow nvim
@@ -18,19 +18,14 @@ File | Description
 ------------ | -------------
 `bin` | Some scripts that serve different puprposes.
 `bin/oneshot` | Here lie a few scripts that will be only used after a fresh Arch Linux installation.
+`beets` | Music library manager.
 `compton` | Composite manager. 
 `dunst`  | Notification daemon.
+`firefox` | Web browser.
+`fontconfig` | Font configuration.
 `i3` | My window manager of choice. 
 `nvim` | NeoVim. Fork of Vim.
 `polybar` | Status bar.
 `x` | Xorg related config files.
 `zathura` | Document viewer.
 `zsh` | Zsh shell.
-
-## TODO
-
-- [x] Initial commit.
-- [ ] Configure zsh.
-- [ ] Configure mpd.
-- [ ] Configure weechat.
-- [ ] Configure mutt.

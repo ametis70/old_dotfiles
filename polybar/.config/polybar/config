@@ -8,15 +8,14 @@
 ;=====================================================
 
 [colors]
-transparency = #00000000
-background = #282C34
-background-alt = #3E4452
-foreground = #ABB2BF
-foreground-alt = #5C6370
-red = #E06C75
-yellow = #d19a66
-green = #98c370
-blue = #61AFEF
+background = ${xrdb:background}
+background-alt = ${xrdb:color0}
+foreground = ${xrdb:foreground}
+foreground-alt = ${xrdb:color8}
+red = ${xrdb:color1}
+green = ${xrdb:color2}
+yellow = ${xrdb:color3}
+blue = ${xrdb:color4}
 
 [settings]
 screenchange-reload = true
@@ -37,54 +36,44 @@ margin-bottom = 8
 [bar/top]
 enable-ipc = true
 monitor = ${env:MONITOR:eDP-1}
-offset-y= 0px
-override-redirect = true
+override-redirect = false
 width = 100%
-height = 24
+height = 28
 ;radius = 5.0
 ;fixed-center = false
 
-background = ${colors.transparency}
+background = ${colors.background}
 foreground = ${colors.foreground}
 
 line-size = 3
-padding-left = 2
-padding-right = 2
-module-margin-left = 1
-module-margin-right = 1
+padding-left = 1
+padding-right = 1
 
-font-0 = Dina:pixelsize=9;1
-font-1 = Wuncon Siji:pixelsize=10;2
+font-0 = M+ 1mn:pixelsize=9.01;1
 
-modules-left = date i3
+modules-left = i3 window 
 modules-center = mpd
-modules-right = volume wifi battery xkeyboard 
+modules-right = volume wifi battery date xkeyboard 
 
-tray-position = 
+tray-position = right
 tray-background = ${colors.background}
-tray-padding = 1  
-tray-margin = 18
+tray-transparent = false
+tray-padding = 0
+tray-margin = 0
 tray-maxsize = 16
 tray-detached = false
-tray-offset-x = 18
-
-
+tray-offset-x = 0
 wm-restack = i3
 
 ;dim-value = 0.2
 
-[bar/invisible]
-monitor = ${env:MONITOR:eDP-1}
-override-redirect = false
-height = 32
-background = ${colors.transparency}
-
-modules-left = empty
-
-wm-restack = i3
-
 [module/empty]
 type = custom/script
+
+[module/window]
+type = internal/xwindow
+label = " |  %title%"
+label-maxlen = 30 
 
 [module/i3]
 type = internal/i3
@@ -97,7 +86,7 @@ wrapping-scroll = true
 format = <label-state> <label-mode>
 
 label-mode = %mode%
-label-mode-padding = 2
+label-mode-padding = 1
 label-mode-background = ${colors.yellow}
 label-mode-foreground = ${colors.background}
 
@@ -141,95 +130,74 @@ interface = wlp3s0
 interval = 3.0
 ;udspeed-minwidth = 0
 
-format-connected = <ramp-signal><label-connected>
-format-connected-background = ${colors.background}
-format-connected-prefix-foreground = ${colors.green}
-format-connected-prefix-background = ${colors.background-alt}
-format-connected-prefix-offset = -6
-label-connected = " %essid% "
-label-connected-background = ${colors.background}
+format-connected = "<ramp-signal> <label-connected> "
+label-connected = "%essid%"
 
 format-disconnected = <label-disconnected>
-label-disconnected = "%{B#3E4452}%{F#be5046}  %{F-}%{B-}%{B#282C34} not connected %{B-}"
-label-disconnected-foreground = ${colors.foreground}
-label-disconnected-background = ${colors.background}
+label-disconnected = "not connected "
+label-disconnected-foreground = ${colors.background-alt}
 
-ramp-signal-0 = " %{F#be5046}%{F-} "
-ramp-signal-1 = " %{F#e5c07b}%{F-} "
-ramp-signal-2 = " %{F#e5c07b}%{F-} "
-ramp-signal-3 = " %{F#98c379}%{F-} "
-ramp-signal-4 = " %{F#98c379}%{F-} "
-ramp-signal-background = ${colors.background-alt}
+ramp-signal-0 = "%{F#BF616A}WLAN:%{F-}"
+ramp-signal-1 = "%{F#e5c07b}WLAN:%{F-}"
+ramp-signal-2 = "%{F#A3BE8C}WLAN:%{F-}"
 
 
 [module/date]
 type = internal/date
-label = "%{B#3E4452}  %{B-}%{B#282C34} %date% %{B-}  %{B#3E4452}  %{B-}%{B#282C34} %time% %{B-}"
-;label = %{F#ABB2BF}%{F-} %time%
+label = "%date% - %time% | "
 date = %m/%d
 time = %H:%M
 interval = 5
-label-background = ${colors.background}
 
 [module/volume]
 type = internal/volume
 
-label-volume = "%{B#3E4452}%{F#98C379}  %{F-}%{B-}%{B#282C34} %percentage%% %{B-}"
-label-muted = "%{B#3E4452}%{F#E06C75}  %{F-}%{B-}%{B#282C34} %percentage%% %{B-}"
+label-volume = "%{F#A3BE8C}VOL: %{F-}%percentage%% | "
+label-muted = "%{F#BF616A}MUTE: %{F-}%percentage%% | "
 
 [module/battery]
 type = internal/battery
 full-at =  97
 time-format = %H:%M
 
-format-charging = <animation-charging><label-charging>
-label-charging = "%{B#282C34} %percentage%% %{B-}"
-label-full = "%{B#282C34} %percentage%% %{B-}"
+format-charging = "| <animation-charging> <label-charging> | "
+label-charging = "%percentage%%"
+label-full = "%percentage%% "
 
+format-discharging = "| <ramp-capacity> <label-discharging> | "
+label-discharging = "%percentage%%"
 
-format-discharging = <ramp-capacity><label-discharging>
-label-discharging = "%{B#282C34} %percentage%% %{B-}"
+format-full = "<label-full>| "
+format-full-prefix = "| BAT: "
+format-full-foreground = ${colors.green}
 
-format-full = <label-full>
-format-full-prefix = "%{B#3E4452}%{F#98c379}  %{F-}%{B-}"
-format-full-prefix-foreground = #666
-format-full-background = ${colors.background}
+ramp-capacity-0 = "%{F#BF616A}BAT:%{F-}"
+ramp-capacity-1 = "%{F#EBCB8B}BAT:%{F-}"
+ramp-capacity-2 = "%{F#A3BE8C}BAT:%{F-}"
 
-format-discharging-background = ${colors.background} 
-format-charging-background = ${colors.background} 
-
-ramp-capacity-0 = "%{B#3E4452}%{F#be5046}  %{F-}%{B-}"
-ramp-capacity-1 = "%{B#3E4452}%{F#d19a66}  %{F-}%{B-}"
-ramp-capacity-2 = "%{B#3E4452}%{F#98c379}  %{F-}%{B-}"
-ramp-capacity-foreground = ${colors.background-alt}
-
-animation-charging-0 = "%{B#3E4452}  %{B-}"
-animation-charging-1 = "%{B#3E4452}  %{B-}"
-animation-charging-2 = "%{B#3E4452}  %{B-}"
+animation-charging-0 = "!BAT:"
+animation-charging-1 = " BAT:"
 animation-charging-foreground = ${colors.green}
-animation-charging-framerate = 750
+animation-charging-framerate = 800
 
 
 [module/mpd]
 type = internal/mpd
 
-;format-online = <label-time>  <bar-progress>  <label-song>  <icon-prev> <icon-stop> <toggle> <icon-next>  <icon-repeat> <icon-random>
-format-online = <label-time> %{F#88}|%{F-} <label-song> <icon-prev><icon-stop><toggle><icon-next> <icon-repeat><icon-random>
+;format-online = <label-time> %{F#88}|%{F-} <label-song> <icon-prev><icon-stop><toggle><icon-next> <icon-repeat><icon-random>
+format-online = "<label-song>  <label-time>"
 format-online-spacing = 0
-format-online-background = #ee333333
-format-online-underline = #cc333333
 format-online-padding = 3
 
 format-offline = <label-offline>
-format-offline-foreground = ${colors.foreground}
-format-offline-background = ${colors.background}
+format-offline-foreground = ${colors.background-alt}
 
-label-offline = "  mpd is off  "
+label-offline = "mpd is off"
 
 label-song-maxlen = 45
 label-song-ellipsis = true
 
-label-time-foreground = #777
+label-time-foreground = ${colors.foreground-alt}
 
 icon-prev = 
 icon-stop = 
@@ -253,40 +221,14 @@ toggle-off-foreground = #777
 ;bar-progress-empty-foreground = #44
 ;bar-progress-empty-font = 3
 ;
-[module/app-menu]
-type = custom/menu
-label-open = 
-label-close = 
-
-menu-0-0 = Vimperator
-menu-0-0-exec = web
-menu-0-1 = Termite
-menu-0-1-exec = termite
-menu-0-2 = Pcmanfm
-menu-0-2-exec = pcmanfm
-
 [module/xkeyboard]
 type = internal/xkeyboard
 
 blacklist-0 = num lock
-format-prefix = "  "
-format-prefix-foreground = ${colors.foreground} 
-format-prefix-background = ${colors.background-alt} 
-
-label-layout = "%{B#282C34} %layout% %{B-}"
+label-layout = "%layout%"
 
 label-indicator-padding = 1
 label-indicator-background = ${colors.red}
-label-indicator-foreground= ${colors.background}
-
-[module/xwindow]
-type = internal/xwindow
-format = <label>
-label-maxlen = 75
-
-[module/counter]
-type = internal/counter
-format = <counter>
-interval = 0.1
+label-indicator-foreground = ${colors.background}
 
 ; vim:ft=dosini

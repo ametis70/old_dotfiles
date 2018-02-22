@@ -10,7 +10,7 @@ echo `# pacman -Syu` \
 	`# X related` xclip xorg-xinit xorg-xbacklight arandr xdotool \
 	`# NVIDIA` bumblebee mesa nvidia xf86-video-intel lib32-virtualgl lib32-nvidia-utils primus lib32-primus bbswitch \
 	`# Wacom`  xf86-input-wacom \
-	`# Fonts` tamsyn-font dina-font ttf-dejavu ttf-liberation adobe-source-sans-pro-fonts adobe-source-code-pro-fonts ttf-ubuntu-font-family \
+	`# Fonts` tamsyn-font dina-font ttf-dejavu ttf-liberation adobe-source-sans-pro-fonts adobe-source-code-pro-fonts ttf-ubuntu-font-family ttf-fira-sans noto-fonts-emoji \
 	`# i3 related` dmenu i3-wm i3status scrot xdo wmctrl \
 	`# Terminal Emulator` rxvt-unicode \
 	`# Archives` unzip zip unrar p7zip \
@@ -35,4 +35,6 @@ echo `# pacman -Syu` \
 	`# systray` stalonetray \
 	`# Notifications` dunst \
 	`# Virtual Machines` qemu \
-	`# Samba` samba 
+	`# Samba` samba \
+	`# Themes` arc-gtk-theme \
+	`# Music` mpd ncmpcpp beets

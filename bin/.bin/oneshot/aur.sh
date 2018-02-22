@@ -5,5 +5,6 @@ echo`# pacaur -Syu` \
 	`# Dropbox` dropbox \
 	`# Fonts` siji-git ttf-tahoma ttf-ms-fonts \
 	`# Backlight control` acpilight \
-	`# Kinect` libfreenect-git
+	`# Kinect` libfreenect-git \
+	`# Themes` vivacious-colors-icon-theme 
 

@@ -1,0 +1,32 @@
+directory: ~/Data/Music
+library: ~/.musiclibrary.db
+plugins: web fetchart lyrics lastgenre scrub missing embedart mpdupdate thumbnails mbsync edit discogs fromfilename
+
+import:
+    move: no
+    copy: yes
+    write: yes
+    remove: no
+    resume: ask
+    timid: no
+
+paths:
+    default: $albumartist/[$original_year] $album%aunique{}/$track $title
+    singleton: Non-Album/$artist/$title
+    comp: Compilations/$album%aunique{}/$track $title
+
+art_filename: cover
+max_filename_length: 0
+
+
+mpd:
+    host: localhost
+    port: 6600
+
+lastgenre:
+  count: 3
+
+missing:
+    format: $albumartist - $album - $title
+    count: no
+    total: no

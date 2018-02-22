@@ -12,24 +12,6 @@ font pango:Dina 9
 # Variables #
 #############
 
-set_from_resource $darkblack color0 #282c34
-set_from_resource $black color8 #3e4454
-set_from_resource $darkred color1 #e06c75
-set_from_resource $red color9 #be5046
-set_from_resource $darkgreen color2 #98c370
-set_from_resource $green color10 #98c370
-set_from_resource $darkblue color4 #61afef
-set_from_resource $blue color12 #61afef
-set_from_resource $darkmagenta color5 #c678dd
-set_from_resource $magenta color13 #c678dd
-set_from_resource $darkcyan color6 #56b6c2
-set_from_resource $cyan color14 #56b6c2
-set_from_resource $darkwhite color7 #abb2bf
-set_from_resource $white color15 #5c6370
-
-set_from_resource $background backgrkound #282c34
-set_from_resource $foreground foreground #abb2bf
-
 set $ws1  "1"
 set $ws2  "2"
 set $ws3  "3"
@@ -44,6 +26,24 @@ set $ws10 "10"
 ##########
 # Colors #
 ##########
+
+set_from_resource $background background #282c34
+set_from_resource $foreground foreground #282c34
+
+set_from_resource $darkblack color0 #282c34
+set_from_resource $black color8 #3e4454
+set_from_resource $darkred color1 #e06c75
+set_from_resource $red color9 #be5046
+set_from_resource $darkgreen color2 #98c370
+set_from_resource $green color10 #98c370
+set_from_resource $darkblue color4 #61afef
+set_from_resource $blue color12 #61afef
+set_from_resource $darkmagenta color5 #c678dd
+set_from_resource $magenta color13 #c678dd
+set_from_resource $darkcyan color6 #56b6c2
+set_from_resource $cyan color14 #56b6c2
+set_from_resource $darkwhite color7 #abb2bf
+set_from_resource $white color15 #5c6370
 
 #						BORDER		BACKGROUND	TEXT		INDICATOR
 client.focused			$darkcyan	$darkcyan	$black		$green
@@ -66,7 +66,7 @@ floating_modifier $mod
 
 # Start dmenu
 # bindsym $mod+d exec dmenu_run
-bindsym $mod+d exec "dmenu_run -y 8 -x 12 -h 24 -w 1342 -fn 'Dina-8' -nb '#282c34' -sb '#3e4452' -nf '#abb2bf' -sf '#abb2bf'"
+bindsym $mod+d exec "dmenu_run -h 28 -fn 'M+ 1mn-8.5' -nb '$background' -sb '$darkblack' -nf '$foreground' -sf '$white'"
 
 # Change focus
 bindsym $mod+h focus left
@@ -214,7 +214,7 @@ mode "$mode_resize" {
 }
 
 # System Menu
-set $sysmenu "[p]oweroff  re[b]oot  [r]eload [s]uspend  [l]ogout"
+set $sysmenu "[p]oweroff  re[b]oot  [r]eload  [s]uspend  [l]ogout"
 bindsym $mod+Delete      mode $sysmenu
 
 mode $sysmenu {
