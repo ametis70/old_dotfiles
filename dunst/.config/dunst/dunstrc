@@ -2,7 +2,7 @@
 [global]
     monitor = 0
     follow = none
-    geometry = "300x5-24+34"
+    geometry = "300x5-24+42"
     indicate_hidden = yes
     shrink = no
     transparency = 0
@@ -10,10 +10,10 @@
     separator_height = 3
     padding = 8
     horizontal_padding = 8
-    frame_width = 3
+    frame_width = 0
     sort = yes
     idle_threshold = 120
-    font = M+ 1mn 9
+    font = Droid Sans 12
     line_height = 0
     markup = full
     format = "%s\n%b"
@@ -50,16 +50,16 @@
     background = "#2E3440"
     foreground = "#D8DEE9"
     frame_color = "#82A2B2"
-    timeout = 5
+    timeout = 3
 
 [urgency_normal]
     background = "#2E3440"
     foreground = "#D8DEE9"
     frame_color = "#C0AE66"
-    timeout = 10
+    timeout = 8
 
 [urgency_critical]
     background = "#BF616A"
-    foreground = "#2E3440"
+    foreground = "#D8DEE9"
     frame_color = "#BF616A"
     timeout = 0

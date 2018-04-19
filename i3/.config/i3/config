@@ -6,7 +6,7 @@
 set $mod Mod4
 
 #Font 
-font pango:Dina 9 
+font pango: Iosevka Nerd Font Mono 11
 
 #############
 # Variables #
@@ -45,11 +45,11 @@ set_from_resource $cyan color14 #56b6c2
 set_from_resource $darkwhite color7 #abb2bf
 set_from_resource $white color15 #5c6370
 
-#						BORDER		BACKGROUND	TEXT		INDICATOR
-client.focused			$darkcyan	$darkcyan	$black		$green
-client.unfocused		$darkwhite	$darkwhite	$white		$darkwhite
-client.focused_inactive	$darkwhite	$darkwhite	$white		$darkwhite
-client.urgent			$red		$red		$white		$red
+#		        		BORDER		BACKGROUND	TEXT		INDICATOR
+client.focused			$green		$green		$background $green
+client.unfocused		$background	$background	$foreground	$background
+client.focused_inactive	$darkwhite	$darkwhite	$foreground	$darkwhite
+client.urgent			$red		$red		$background	$red
 
 ################
 # Key Bindings #
@@ -66,7 +66,7 @@ floating_modifier $mod
 
 # Start dmenu
 # bindsym $mod+d exec dmenu_run
-bindsym $mod+d exec "dmenu_run -h 28 -fn 'M+ 1mn-8.5' -nb '$background' -sb '$darkblack' -nf '$foreground' -sf '$white'"
+bindsym $mod+Shift+d exec "dmenu_run -h 28 -x 11 -y 6 -w 1344 -fn 'Iosevka Nerd Font Mono-11' -nb '$background' -sb '$darkblack' -nf '$foreground' -sf '$white'"
 
 # Change focus
 bindsym $mod+h focus left
@@ -92,11 +92,8 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-# Split in vertical orientation
-bindsym $mod+v split v
-
-# Split in horizontal orientation
-bindsym $mod+Shift+v split h
+# Toggle Split in vertical/horizontal orientation
+bindsym $mod+v split toggle 
 
 # Enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -124,6 +121,8 @@ bindsym $mod+Shift+c reload
 # Restart i3 inplace (preserves your layout/session, can be used to upgrde i3)
 bindsym $mod+Shift+r restart
 
+# Program shortcuts
+
 # Scrot
 bindsym --release Print exec $HOME/.bin/scrot
 bindsym --release Shift+Print exec $HOME/.bin/scrot-area 
@@ -133,8 +132,14 @@ bindsym --release Shift+Print exec $HOME/.bin/scrot-area
 
 # pcmanfm 
 bindsym $mod+p exec --no-startup-id pcmanfm -n
+
 # Chromium
 bindsym $mod+c exec --no-startup-id chromium
+
+# Rofi
+bindsym $mod+d exec --no-startup-id rofi -show run 
+bindsym $mod+Shift+p exec --no-startup-id ~/.bin/rofi-passmenu
+bindsym $mod+Shift+e exec --no-startup-id ~/.bin/rofi-emoji
 
 ##############
 # Workspaces #
@@ -173,22 +178,40 @@ bindsym $mod+Shift+0 move container to workspace number $ws10
 
 # Assign clients to workspaces
 
-assign [class="^google-chrome$"] → $ws1
+assign [class="^Nautilus$"] → $ws1
+assign [class="^pcmanfm$"] → $ws1
+assign [class="^Pcmanfm$"] → $ws1
+
 assign [class="^Firefox$"] → $ws2
 assign [class="^Chromium$" window_role="^browser$"] → $ws2
-assign [class="^Navigator$"] → $ws2
-assign [class="^Nautilus$"] → $ws4
-assign [class="^Termite$" instance="^playlist$"] → $ws5
-assign [class="^Termite$" instance="^visualizer$"] → $ws5
-assign [class="^Termite$" instance="^media_library$"] → $ws5
-assign [class="^Termite$" instance="^weechat$"] → $ws6
-assign [class="^Termite$" instance="^mutt$"] → $ws6
-assign [class="^Termite$" instance="^newsbeuter$"] → $ws6
-
 for_window [class="^Chromium$" window_role="^pop-up$"] floating enable 
-for_window [class="^Steam$" title="Friends"] floating enable 
-for_window [class="^Steam$" title=" - Chat"] floating enable 
-for_window [class="^Steam$" title="^Steam Guard$"] floating enable 
+
+assign [class="^atom$"] → $ws3
+assign [class="^Atom$"] → $ws3
+assign [class="^sun-awt-X11-XFramePeer$"] → $ws3
+assign [class="^Processing$"] → $ws3
+for_window [title="^Welcome to Processing"] floating enable 
+assign [class="^processing-app-Base$"] → $ws3
+for_window [title="^Java$"] floating enable 
+for_window [title="^Java$"] move position center  
+
+assign [class="^discord$"] → $ws4
+assign [class="^telegram-desktop$"] → $ws4
+assign [class="^TelegramDesktop$"] → $ws4
+
+assign [class="^cura$"] → $ws6
+assign [class="^inkscape$"] → $ws6
+assign [class="^Inkscape$"] → $ws6
+assign [class="^gimp$"] → $ws6
+assign [class="^Gimp$"] → $ws6
+assign [class="^krita$"] → $ws6
+assign [class="^Blender$"] → $ws6
+
+assign [class="^Steam$"] → $ws9
+assign [title="^Steam$"] → $ws9
+for_window [class="^Steam$" title="^Steam - News$"] floating enable 
+for_window [class="^Steam$" title="^Friends$"] floating enable 
+for_window [class="^Steam$" title="- Chat$"] floating enable 
 
 #########
 # Modes #
@@ -243,10 +266,17 @@ exec_always --no-startup-id $HOME/.bin/polybar
 # Multimedia Keys #
 ###################
 
-# Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +2% #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -2% #decrease sound volume
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+# Volume 
+
+# PulseAudio
+#bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +2% #increase sound volume
+#bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -2% #decrease sound volume
+#bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+
+# ALSA
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse sset Master '5%+'
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D pulse sset Master '5%-'
+bindsym XF86AudioMute exec --no-startup-id amixer set Master toggle
 
 # MPC
 bindsym XF86AudioPrev exec mpc prev

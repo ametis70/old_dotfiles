@@ -1,0 +1,11 @@
+tint2 &
+# plank &
+~/.bin/mpvbg ~/Pictures/wallpapers/ds3.webm
+nm-applet &
+steam -silent &
+telegram-desktop -startintray &
+blueman-applet &
+pasystray &
+redshift-gtk &
+cbatticon BAT0 -l 25 -r 10 &
+clipit &

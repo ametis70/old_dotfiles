@@ -4,8 +4,12 @@ set nocompatible
 " Specify a directory for plugins
 call plug#begin('~/.local/share/nvim/plugged')
 
-" Plug 'joshdick/onedark.vim'
+"Plug 'joshdick/onedark.vim'
+"Plug 'rakr/vim-one'
 Plug 'arcticicestudio/nord-vim'
+Plug 'dracula/vim', { 'as': 'dracula' }
+"Plug 'cocopon/iceberg.vim'
+
 Plug 'gioele/vim-autoswap' "Requires wmctrl
 Plug 'sheerun/vim-polyglot'
 Plug 'othree/yajs.vim'
@@ -13,16 +17,18 @@ Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'jparise/vim-graphql'
 Plug 'styled-components/vim-styled-components'
 Plug 'itchyny/lightline.vim'
+Plug 'itchyny/lightline-powerful'
 Plug 'Valloric/YouCompleteMe'
+Plug 'ryanoasis/vim-devicons'
 Plug 'vim-syntastic/syntastic'
 " Plug 'vim-airline/vim-airline'
 Plug 'sjl/gundo.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'kien/ctrlp.vim'
 Plug 'tpope/vim-surround'
-Plug 'scrooloose/syntastic'
 Plug 'scrooloose/nerdtree'
-Plug 'xuyuanp/nerdtree-git-plugin'
+" Plug 'xuyuanp/nerdtree-git-plugin'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'tpope/vim-commentary'
 Plug 'lervag/vimtex'
@@ -33,18 +39,19 @@ call plug#end()
 filetype plugin indent on
 
 " Syntax highlighting
+set termguicolors
 let g:polyglot_disabled = ['js']
 syntax on
-"let g:onedark_termcolors = 16 
-colorscheme nord 
+let g:nord_italic_comments = 1
+colorscheme dracula
 " hi Normal ctermbg=none
 " hi NonText ctermbg=none
 
 " Tabs and Identation
-set noexpandtab
+set expandtab
 set copyindent
 set preserveindent
-set softtabstop=0
+set softtabstop=4
 set shiftwidth=4
 set tabstop=4
 
@@ -111,8 +118,21 @@ set writebackup
 set laststatus=2
 set noshowmode
 let g:lightline = {
-  \ 'colorscheme': 'nord',
-  \ }
+	\ 'colorscheme': 'nord',
+   	\ 'component_function': {
+    	\   'filetype': 'MyFiletype',
+      	\   'fileformat': 'MyFileformat',
+   	\ }
+\ }
+
+function! MyFiletype()
+  	return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft') : ''
+endfunction
+
+function! MyFileformat()
+  	return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : ''
+endfunction
+  			\ }
 
 
 " Plugins
@@ -135,17 +155,16 @@ let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
 
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-  \ 'file': '\v\.(exe|so|dll)$',
-  \ 'link': 'some_bad_symbolic_links',
-  \ }
+  			\ 'dir':  '\v[\/]\.(git|hg|svn)$',
+  			\ 'file': '\v\.(exe|so|dll)$',
+  			\ 'link': 'some_bad_symbolic_links',
+  			\ }
 
 " NERD Tree
 map <C-n> :NERDTreeToggle<CR>
 
 " YouCompleteMe
 " https://aur.archlinux.org/packages/vim-youcompleteme-git/
-let g:ycm_global_ycm_extra_conf = '/home/ianmethyst/.config/nvim/ymc_extra_conf.py'
 
 " Syntastic
 set statusline+=%#warningmsg#
@@ -153,23 +172,39 @@ set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_javascript_eslint_exe = 'eslint_d'
 
-" Arduino
-let g:arduino_dir = '/usr/share/arduino'
-let g:arduino_cmd = '/usr/share/arduino/arduino'
-
-function! MyStatusLine()
- let port = arduino#GetPort()
-  let line = '%f [' . g:arduino_board . '] [' . g:arduino_programmer . ']'
-  if !empty(port)
-    let line = line . ' (' . port . ':' . g:arduino_serial_baud . ')'
-  endif
-  return line
-endfunction
-setl statusline=%!MyStatusLine()
-
+" Autofix entire buffer with eslint_d:
+nnoremap <leader>f mF:%!eslint_d --stdin --fix-to-stdout<CR>`F
+" Autofix visual selection with eslint_d:
+vnoremap <leader>f :!eslint_d --stdin --fix-to-stdout<CR>gv
 
 let g:vimtex_quickfix_mode = 0
+
+" NERDTree git
+let g:NERDTreeIndicatorMapCustom = {
+    \ "Modified"  : "✹",
+    \ "Staged"    : "✚",
+    \ "Untracked" : "✭",
+    \ "Renamed"   : "➜",
+    \ "Unmerged"  : "═",
+    \ "Deleted"   : "✖",
+    \ "Dirty"     : "✗",
+    \ "Clean"     : "✔︎",
+    \ 'Ignored'   : '☒',
+    \ "Unknown"   : "?"
+    \ }
+
+" NERDTree file extension file highlight
+let g:NERDTreeFileExtensionHighlightFullName = 1
+let g:NERDTreeExactMatchHighlightFullName = 1
+let g:NERDTreePatternMatchHighlightFullName = 1
+
+let g:NERDTreeHighlightFolders = 1 " enables folder icon highlighting using exact match
+let g:NERDTreeHighlightFoldersFullName = 1 " highlights the folder name
+
+

@@ -1,2 +1,5 @@
 #! /bin/bash
-scrot -d 0.1 -selection '%Y-%m-%d-%H-%M-%S.png' -e 'xclip -selection clipboard -t image/png $f && mv $f ~/Pictures/screenshots/'
+FILENAME=`date +%Y-%m-%d-%H-%M-%S`.png
+scrot -d 0.1 -selection $FILENAME -e 'xclip -selection clipboard -t image/png $f && mv $f ~/Pictures/screenshots/'
+notify-send "📷 Saved screenshot as $FILENAME"
+

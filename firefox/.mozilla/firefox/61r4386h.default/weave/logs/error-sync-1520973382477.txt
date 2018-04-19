@@ -1,0 +1,23 @@
+1520973114827	Sync.Service	DEBUG	User-Agent: Firefox/58.0.2 (Linux x86_64) FxSync/1.60.0.20180207210535.desktop
+1520973114828	Sync.Service	INFO	Starting sync at 2018-03-13 17:31:54 in browser session zC2I8RwhAz-G
+1520973114829	Sync.SyncScheduler	DEBUG	Clearing sync triggers and the global score.
+1520973114831	Sync.Telemetry	TRACE	observed weave:service:sync:start 
+1520973114834	Sync.Status	INFO	Resetting Status.
+1520973114835	Sync.Status	DEBUG	Status.service: success.status_ok => success.status_ok
+1520973114837	Sync.BrowserIDManager	DEBUG	_ensureValidToken already has one
+1520973328538	Sync.SyncScheduler	DEBUG	Next sync in 600000 ms.
+1520973382407	Sync.Resource	WARN	GET request to https://sync-625-us-west-2.sync.services.mozilla.com/1.5/95522794/info/collections failed: [Exception... "NS_ERROR_UNKNOWN_HOST"  nsresult: "0x804b001e (NS_ERROR_UNKNOWN_HOST)"  location: "JS frame :: resource://services-sync/resource.js :: Channel_onStopRequest :: line 416"  data: no] Stack trace: Channel_onStopRequest()@resource://services-sync/resource.js:416
+1520973382457	Sync.Status	DEBUG	Status.sync: success.sync => error.login.reason.network
+1520973382457	Sync.Status	DEBUG	Status.service: success.status_ok => error.sync.failed
+1520973382460	Sync.SyncScheduler	DEBUG	Next sync in 600000 ms.
+1520973382461	Sync.ErrorHandler	ERROR	Sync encountered an error: [Exception... "NS_ERROR_UNKNOWN_HOST"  nsresult: "0x804b001e (NS_ERROR_UNKNOWN_HOST)"  location: "JS frame :: resource://services-sync/resource.js :: Channel_onStopRequest :: line 416"  data: no] Stack trace: Channel_onStopRequest()@resource://services-sync/resource.js:416
+1520973382463	Sync.Telemetry	TRACE	observed weave:service:sync:error 
+1520973382471	Sync.Service	DEBUG	Exception calling anonymous function: [Exception... "NS_ERROR_UNKNOWN_HOST"  nsresult: "0x804b001e (NS_ERROR_UNKNOWN_HOST)"  location: "JS frame :: resource://services-sync/resource.js :: Channel_onStopRequest :: line 416"  data: no] Stack trace: Channel_onStopRequest()@resource://services-sync/resource.js:416
+1520973382474	Sync.ErrorHandler	DEBUG	Addons installed: 7
+1520973382474	Sync.ErrorHandler	DEBUG	 - uBlock Origin, version 1.15.10, id uBlock0@raymondhill.net
+1520973382475	Sync.ErrorHandler	DEBUG	 - OneTab, version 1.25, id extension@one-tab.com
+1520973382476	Sync.ErrorHandler	DEBUG	 - Save Button for Pinterest, version 64.2.0, id {677a8f98-fd64-40b0-a883-b8c95d0cbf17}
+1520973382476	Sync.ErrorHandler	DEBUG	 - Enhanced Steam, version 9.7.1, id jid1-YdiFiTEkQgInxA@jetpack
+1520973382477	Sync.ErrorHandler	DEBUG	 - React Developer Tools, version 3.1.0, id @react-devtools
+1520973382477	Sync.ErrorHandler	DEBUG	 - Reddit Enhancement Suite, version 5.10.3, id jid1-xUfzOsOFlzSOXg@jetpack
+1520973382477	Sync.ErrorHandler	DEBUG	 - Wappalyzer, version 5.4.11, id wappalyzer@crunchlabz.com
