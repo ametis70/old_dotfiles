@@ -13,36 +13,24 @@ URxvt.scrollBar: 0
 ! Cursor blink
 URxvt.cursorBlink: 1
 
-!Geometry
+! Geometry
 URxvt.geometry: 		92x16
 
-
-! Enables copy/paste with Ctrl-Shift-C/V
-URxvt.iso14755: false
-URxvt.iso14755_52: false
+! Clipboard
 URxvt.perl-ext-common: default,clipboard
 URxvt.keysym.Shift-Control-C: perl:clipboard:copy
 URxvt.keysym.Shift-Control-V: perl:clipboard:paste
 
 ! Font
 URxvt.font: xft:Iosevka Nerd Font Mono:size=11, xft:Symbola:size=13
-
-! Icon
-URxvt.iconFile:    /usr/share/icons/Papirus-Adapta/64x64/apps/terminal.svg
-
 URxvt.letterSpace: 0
 URxvt*lineSpace: 0
 
-Xft.autohint: 0
-Xft.dpi: 92
-Xft.antialias: 1
-Xft.hinting: true
-Xft.hintstyle: hintslight
-Xft.rgba: rgb
-Xft.lcdfilter: lcddefault
+! Icon
+URxvt.iconFile: terminal.svg
 
 ! Clickable links
-URxvt.url-launcher: /usr/bin/firefox
+URxvt.url-launcher: /usr/bin/chromium
 
 ! Border 
 URxvt.internalBorder:  18
@@ -62,29 +50,43 @@ URxvt.keysym.Control-Down:    \033[1;5B
 URxvt.keysym.Control-Left:    \033[1;5D
 URxvt.keysym.Control-Right:    \033[1;5C
 
-! Rofi
+! Font rendering
+Xft.autohint: 0
+Xft.dpi: 92
+Xft.antialias: 1
+Xft.hinting: true
+Xft.hintstyle: hintslight
+Xft.rgba: rgb
+Xft.lcdfilter: lcddefault
+
+
+!!!!!!!!
+! Rofi !
+!!!!!!!!
+
 ! Enable the extended coloring options
 rofi.color-enabled: true
 
 !                  bg       border   separator
-rofi.color-window: #2e3440, #d8dee9, #d8dee9
+rofi.color-window: #282A36, #50FA7B, #282A36
 
 !                  bg       fg       bg-alt   hl-bg    hl-fg
-rofi.color-normal: #2e3440, #d8dee9, #2e3440, #4c566a, #d8dee9
-rofi.color-active: #d8dee9, #2e3440, #d8dee9, #d8dee9, #4c566a
-rofi.color-urgent: #d8dee9, #2e3440, #d8dee9, #d8dee9, #4c566a
+rofi.color-normal: #282A36, #F8F8F2, #282A36, #50FA7B, #282A36
+rofi.color-active: #F1FA8C, #282A36, #F1FA8C, #BD93F9, #282A36
+rofi.color-urgent: #FF5555, #F8F8F2, #FF5555, #FF6E67, #F8F8F2
 
-rofi.terminal:	    urxvt	
-rofi.ssh-command:	{terminal} -e "{ssh-client} {host}"
+rofi.terminal: termite
+rofi.ssh-client: ssh
+rofi.ssh-command: {terminal} -e "{ssh-client} {host}"
 rofi.run-shell-command:	{terminal} -e "{cmd}"
 rofi.hide-scrollbar: true
 rofi.font: Iosevka Nerd Font Mono 11
 rofi.separator-style: none
 rofi.scrollbar-width: 0
 rofi.location: 1
-rofi.yoffset: 42
+rofi.yoffset: 40
 rofi.xoffset: 24
 rofi.padding: 18
 rofi.lines: 12 
 rofi.width: 400
-rofi.bw: 0
+rofi.bw: 3

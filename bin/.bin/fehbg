@@ -1,2 +1,5 @@
 #!/bin/sh
-feh --bg-fill $HOME/Pictures/wallpapers/canon.png
+
+[ -f "$1" ] || exit 1
+
+feh --bg-fill "$1" 

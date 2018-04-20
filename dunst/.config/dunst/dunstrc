@@ -2,7 +2,7 @@
 [global]
     monitor = 0
     follow = none
-    geometry = "300x5-24+42"
+    geometry = "300x5-24+40"
     indicate_hidden = yes
     shrink = no
     transparency = 0
@@ -13,7 +13,7 @@
     frame_width = 0
     sort = yes
     idle_threshold = 120
-    font = Droid Sans 12
+    font = Iosevka Nerd Font Mono 11
     line_height = 0
     markup = full
     format = "%s\n%b"
@@ -23,14 +23,14 @@
     ignore_newline = no
     stack_duplicates = true
     hide_duplicate_count = false
-    show_indicators = yes
+    show_indicators = no
     icon_position = off
     max_icon_size = 32
-    icon_folders = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/
+    icon_path = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/
     sticky_history = yes
     history_length = 20
     dmenu = /usr/bin/dmenu -p dunst:
-    browser = /usr/bin/firefox -new-tab
+    browser = /usr/bin/chromium 
     always_run_script = true
     title = Dunst
     class = Dunst
@@ -47,19 +47,19 @@
     context = ctrl+shift+period
 
 [urgency_low]
-    background = "#2E3440"
-    foreground = "#D8DEE9"
-    frame_color = "#82A2B2"
-    timeout = 3
+    background = "#282A36"
+    foreground = "#F8F8F2"
+    frame_color = "#282A36"
+    timeout = 4
 
 [urgency_normal]
-    background = "#2E3440"
+    background = "#282A36"
     foreground = "#D8DEE9"
-    frame_color = "#C0AE66"
+    frame_color = "#F1FA8C"
     timeout = 8
 
 [urgency_critical]
-    background = "#BF616A"
-    foreground = "#D8DEE9"
-    frame_color = "#BF616A"
+    background = "#FF5555"
+    foreground = "#F8F8F2"
+    frame_color = "#FF5555"
     timeout = 0

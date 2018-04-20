@@ -18,40 +18,40 @@ set guioptions "s"
 
 # Colors and font
 
-set font "dina 9"
+set font "Iosevka Nerd Font Mono 11"
 
 # Base16 Superfluous Dark
 # Author: Ian Mancini (https://github.com/ianmethyst)
 
-set default-bg                  "#0A0A0D"
-set default-fg                  "#14141A"
+set default-bg                  "#282A36"
+set default-fg                  "#F8F8F2"
 
-set statusbar-fg                "#747A7A"
-set statusbar-bg                "#25252E"
+set statusbar-bg                "#424450"
+set statusbar-fg                "#F8F8F2"
 
-set inputbar-bg                 "#0A0A0D"
-set inputbar-fg                 "#CED9D9"
+set inputbar-bg                 "#282A36"
+set inputbar-fg                 "#F8F8F2"
 
-set notification-bg             "#0A0A0D"
-set notification-fg             "#CED9D9"
+set notification-bg             "#8BE9FD"
+set notification-fg             "#282A36"
 
-set notification-error-bg       "#0A0A0D"
-set notification-error-fg       "#B26F7A"
+set notification-error-bg       "#FF5555"
+set notification-error-fg       "#F8F8F2"
 
-set notification-warning-bg     "#0A0A0D"
-set notification-warning-fg     "#B26F7A"
+set notification-warning-bg     "#F1FA8C"
+set notification-warning-fg     "#282A36"
 
-set highlight-color             "#C0AE66"
-set highlight-active-color      "#7086B2"
+set highlight-color             "#F1FA8C"
+set highlight-active-color      "#50FA7B"
 
-set completion-bg               "#14141A"
-set completion-fg               "#7086B2"
+set completion-bg               "#282A36"
+set completion-fg               "#F8F8F2"
 
-set completion-highlight-fg     "#CED9D9"
-set completion-highlight-bg     "#7086B2"
+set completion-highlight-bg     "#50FA7B"
+set completion-highlight-fg     "#282A36"
 
-set recolor-lightcolor          "#0A0A0D"
-set recolor-darkcolor           "#BDC7C7"
+set recolor-lightcolor          "#F8F8F2"
+set recolor-darkcolor           "#282A36"
 
 set recolor                     "false"
 set recolor-keephue             "false"

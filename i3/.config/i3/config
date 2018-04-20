@@ -5,11 +5,14 @@
 # Using Super instead of alt 
 set $mod Mod4
 
-#Font 
+# Font 
 font pango: Iosevka Nerd Font Mono 11
 
+# Titles
+for_window [class="^.*"] title_format " %title"
+
 #############
-# Variables #
+# Workspaces #
 #############
 
 set $ws1  "1"
@@ -46,10 +49,10 @@ set_from_resource $darkwhite color7 #abb2bf
 set_from_resource $white color15 #5c6370
 
 #		        		BORDER		BACKGROUND	TEXT		INDICATOR
-client.focused			$green		$green		$background $green
+client.focused			$green		$green		$background $yellow
 client.unfocused		$background	$background	$foreground	$background
-client.focused_inactive	$darkwhite	$darkwhite	$foreground	$darkwhite
-client.urgent			$red		$red		$background	$red
+client.focused_inactive	$darkwhite  $darkwhite	$foreground	$darkwhite
+client.urgent			$red		$red		$foreground $red
 
 ################
 # Key Bindings #
@@ -66,7 +69,7 @@ floating_modifier $mod
 
 # Start dmenu
 # bindsym $mod+d exec dmenu_run
-bindsym $mod+Shift+d exec "dmenu_run -h 28 -x 11 -y 6 -w 1344 -fn 'Iosevka Nerd Font Mono-11' -nb '$background' -sb '$darkblack' -nf '$foreground' -sf '$white'"
+bindsym $mod+Shift+d exec "dmenu_run -h 24 -x 12 -y 10 -w 1342 -fn 'Iosevka Nerd Font Mono-11' -nb '$background' -sb '$green' -nf '$foreground' -sf '$background'"
 
 # Change focus
 bindsym $mod+h focus left
@@ -202,16 +205,36 @@ assign [class="^TelegramDesktop$"] → $ws4
 assign [class="^cura$"] → $ws6
 assign [class="^inkscape$"] → $ws6
 assign [class="^Inkscape$"] → $ws6
+assign [class="^darktable$"] → $ws6
+assign [class="^Darktable$"] → $ws6
 assign [class="^gimp$"] → $ws6
 assign [class="^Gimp$"] → $ws6
 assign [class="^krita$"] → $ws6
 assign [class="^Blender$"] → $ws6
+assign [title="^LibreOffice$"] → $ws6
+assign [class="^libreoffice$"] → $ws6
+assign [class="^libreoffice-startcenter$"] → $ws6
+assign [class="^libreoffice-writer$"] → $ws6
 
 assign [class="^Steam$"] → $ws9
 assign [title="^Steam$"] → $ws9
-for_window [class="^Steam$" title="^Steam - News$"] floating enable 
+for_window [class="^Steam$" title="^Steam - News"] floating enable 
 for_window [class="^Steam$" title="^Friends$"] floating enable 
 for_window [class="^Steam$" title="- Chat$"] floating enable 
+
+#############
+# Autostart #
+#############
+
+exec $HOME/.bin/fehbg $HOME/Pictures/wallpapers/simpledesktops/v17-pascal-nosenzo.png 
+exec $HOME/.bin/setxkbmap 
+
+exec dunst 
+exec compton --config $HOME/.config/compton/compton.conf
+exec pcmanfm -d 
+exec discord
+exec telegram-desktop
+exec steam
 
 #########
 # Modes #
@@ -237,15 +260,16 @@ mode "$mode_resize" {
 }
 
 # System Menu
-set $sysmenu "[p]oweroff  re[b]oot  [r]eload  [s]uspend  [l]ogout"
+set $sysmenu "[p]oweroff  re[b]oot  [h]ibernate  [s]uspend  [l]ogout"
 bindsym $mod+Delete      mode $sysmenu
 
 mode $sysmenu {
-    bindsym r         restart
+    #    bindsym r         restart
     bindsym l         exit
     bindsym p         exec shutdown -P now
     bindsym b         exec shutdown -r now
     bindsym s	      exec systemctl suspend
+    bindsym h	      exec systemctl hibernate
     bindsym Return    mode "default"
     bindsym Escape    mode "default"
 }
