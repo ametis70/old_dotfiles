@@ -146,7 +146,7 @@ rofi.location: 1
 rofi.yoffset: 40
 rofi.xoffset: 24
 rofi.padding: 18
-rofi.lines: 9
+rofi.lines: 18
 rofi.eh: 2
 rofi.width: 400
 rofi.bw: 0
