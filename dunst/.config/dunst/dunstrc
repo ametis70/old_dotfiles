@@ -13,7 +13,7 @@
     frame_width = 0
     sort = yes
     idle_threshold = 120
-    font = Iosevka Nerd Font Mono 11
+    font = scientifica 9
     line_height = 0
     markup = full
     format = "%s\n%b"
@@ -47,19 +47,19 @@
     context = ctrl+shift+period
 
 [urgency_low]
-    background = "#282A36"
-    foreground = "#F8F8F2"
-    frame_color = "#282A36"
+    background = "#212121"
+    foreground = "#eeffff"
+    frame_color = "#212121"
     timeout = 4
 
 [urgency_normal]
-    background = "#282A36"
-    foreground = "#D8DEE9"
-    frame_color = "#F1FA8C"
+    background = "#212121"
+    foreground = "#eeffff"
+    frame_color = "#212121"
     timeout = 8
 
 [urgency_critical]
-    background = "#FF5555"
-    foreground = "#F8F8F2"
-    frame_color = "#FF5555"
+    background = "#f07178"
+    foreground = "#eeffff"
+    frame_color = "#f07178"
     timeout = 0

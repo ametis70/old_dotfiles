@@ -1,14 +1,15 @@
 [colors]
-transparency = #00000000
-comment = #6272a4
+transparency = #f2212121
+comment = ${xrdb:color8}
 background = ${xrdb:background}
-background-alt = ${xrdb:color0}
+background-alt = ${xrdb:color8}
 foreground = ${xrdb:foreground}
-foreground-alt = ${xrdb:color8}
+foreground-alt = ${xrdb:color13}
 red = ${xrdb:color1}
 green = ${xrdb:color2}
 yellow = ${xrdb:color3}
-purple= ${xrdb:color4}
+blue= ${xrdb:color4}
+purple = ${xrdb:color5}
 cyan = ${xrdb:color6}
 
 [settings]
@@ -17,6 +18,7 @@ screenchange-reload = true
 [bar/top]
 enable-ipc = true
 monitor = ${env:MONITOR:eDP-1}
+wm-restack = true
 override-redirect = false
 width = 100%
 height = 24
@@ -25,18 +27,19 @@ fixed-center = true
 background = ${colors.transparency}
 foreground = ${colors.foreground}
 border-top-color = ${colors.transparency}
+border-bottom-color = ${colors.transparency}
 
-padding-left = 3
-padding-right = 3
-border-bottom-size = 0
-border-top-size = 10
+padding-left = 1
+padding-right = 1
+border-bottom-size = 5
+border-top-size = 5
 
-font-0 = FontAwesome:size=11;3
-font-1 = Iosevka Nerd Font Mono:size= 10;3
+font-0 = scientifica:size=9:antialias=true;2
+font-1 = Wuncon Siji:size=9:antialias=true;2
 
-modules-left = i3 window 
-modules-center = mpd
-modules-right = volume wifi battery date xkeyboard 
+modules-left = i3 mpd
+modules-center = window 
+modules-right = wifi volume battery date xkeyboard 
 
 tray-position = 
 tray-background = ${colors.background-alt}
@@ -51,11 +54,10 @@ type = custom/script
 [module/window]
 type = internal/xwindow
 label =  %title%
-label-maxlen = 30 
-label-background = ${colors.green}
-label-foreground = ${colors.background}
-label-margin = 2
-label-padding = 2 
+label-maxlen = 60 
+label-foreground = ${colors.foreground}
+label-margin = 1
+label-padding = 1
 
 [module/i3]
 type = internal/i3
@@ -67,43 +69,38 @@ wrapping-scroll = true
 format = <label-state> <label-mode>
 
 label-mode = %mode%
-label-mode-padding = 2
+label-mode-padding = 1
 label-mode-margin = 1
-label-mode-background = ${colors.yellow}
-label-mode-foreground = ${colors.background}
+label-mode-foreground = ${colors.yellow}
 
 label-focused = %icon%
-label-focused-padding = 2
-label-focused-background = ${colors.green}
-label-focused-foreground = ${colors.background}
+label-focused-padding = 1
+label-focused-foreground = ${colors.green}
 
 label-unfocused =  %icon%
-label-unfocused-padding= 2
-label-unfocused-background = ${colors.background}
-label-unfocused-foreground = ${colors.foreground}
+label-unfocused-padding= 1
+label-unfocused-foreground = ${colors.background-alt}
 
 label-urgent = %icon%
-label-urgent-padding= 2
-label-urgent-background = ${colors.red}
-label-urgent-foreground = ${colors.background}
+label-urgent-padding= 1
+label-urgent-foreground = ${colors.red}
 
 label-visible = %icon%
-label-visible-padding= 2
-label-visible-background = ${colors.purple}
-label-visible-foreground = ${colors.background}
+label-visible-padding= 1
+label-visible-foreground = ${colors.purple}
 
-ws-icon-0 = 1;
-ws-icon-1 = 2;
-ws-icon-2 = 3;
-ws-icon-3 = 4;
-ws-icon-4 = 5;
-ws-icon-5 = 6;
-ws-icon-6 = 7;
-ws-icon-7 = 8;
-ws-icon-8 = 9; 
-ws-icon-9 = 10;
+ws-icon-0 = 1;
+ws-icon-1 = 2;
+ws-icon-2 = 3;
+ws-icon-3 = 4;
+ws-icon-4 = 5;
+ws-icon-5 = 6;
+ws-icon-6 = 7;
+ws-icon-7 = 8;
+ws-icon-8 = 9;
+ws-icon-9 = 10;
 
-ws-icon-default = 
+ws-icon-default = ?
 
 
 [module/wifi]
@@ -112,75 +109,67 @@ interface = wlp3s0
 interval = 3.0
 
 format-connected = <label-connected>
-label-connected = "  %essid%"
-label-connected-padding = 2
-label-connected-margin = 1
-label-connected-background = ${colors.green}
-label-connected-foreground = ${colors.background}
+label-connected = " %essid%"
+label-connected-padding = 1
+label-connected-foreground = ${colors.green}
 
 format-disconnected = <label-disconnected>
-label-disconnected = "DISCONNECTED"
-label-disconnected-padding = 2
-label-disconnected-margin = 1
-label-disconnected-background = ${colors.background}
-label-disconnected-foreground = ${colors.comment}
+label-disconnected = " DISCONNECTED"
+label-disconnected-padding = 1
+label-disconnected-foreground = ${colors.background}
 
 [module/date]
 type = internal/date
-label = "%date% - %time%"
+label = " %date%  %time%"
 date = %m/%d
 time = %H:%M
 interval = 5
 
-label-padding = 2
-label-margin = 1
-label-foreground = ${colors.background}
-label-background = ${colors.cyan}
+label-padding = 1
+label-foreground = ${colors.cyan}
 
 [module/volume]
 type = internal/volume
 
 format-volume = <label-volume>
-label-volume =  "  %percentage%%"
-label-volume-background = ${colors.green}
-label-volume-foreground = ${colors.background}
-label-volume-padding = 2
-label-volume-margin = 1
+label-volume =  " %percentage%%"
+label-volume-foreground = ${colors.green}
+label-volume-padding = 1
 
-label-muted =    MUTE
-label-muted-background = ${colors.red}
-label-muted-margin = 1
-label-muted-padding = 2
+label-muted =   %percentage%%
+label-muted-foreground = ${colors.red}
+label-muted-padding = 1
 
 [module/battery]
 type = internal/battery
-full-at =  97
+full-at =  100
 time-format = %H:%M
 
 format-charging = <animation-charging> <label-charging>
 label-charging = %percentage%%
-format-charging-background = ${colors.green}
-format-charging-foreground = ${colors.background}
-format-charging-padding = 2
-format-charging-margin = 1
+format-charging-foreground = ${colors.green}
+format-charging-padding = 1
 
 format-full = "<label-full>"
-label-full = "  %percentage%% "
-format-full-background = ${colors.green}
-format-full-foreground = ${colors.background}
-format-full-padding = 2
-format-full-margin = 1
+label-full = " %percentage%% "
+format-full-foreground= ${colors.green}
+format-full-padding = 1
 
-format-discharging = <label-discharging>
-label-discharging = "  %percentage%%"
-format-discharging-background = ${colors.yellow}
-format-discharging-foreground = ${colors.background}
-format-discharging-padding = 2
-format-discharging-margin= 1
+format-discharging = <ramp-capacity> <label-discharging>
+label-discharging = "%percentage%%"
+format-discharging-foreground = ${colors.yellow}
+format-discharging-padding = 1
 
-animation-charging-0 = " "
-animation-charging-1 = " "
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
 animation-charging-framerate = 800
+
 
 [module/mpd]
 type = internal/mpd
@@ -188,17 +177,19 @@ type = internal/mpd
 format-online = <label-song>  <label-time>
 format-online-spacing = 0
 format-online-padding = 2
+format-online-margin = 1
 format-online-background = ${colors.background}
 
 format-offline = <label-offline>
 format-offline-foreground = ${colors.comment}
 format-offline-background = ${colors.background}
 format-offline-padding = 2 
+format-offline-margin = 1
 
 label-offline = "mpd is off"
 format-paused-foreground = ${colors.comment}
 
-label-song-maxlen = 45
+label-song-maxlen = 50
 label-song-ellipsis = true
 
 label-time-foreground = ${colors.comment}
@@ -207,15 +198,10 @@ label-time-foreground = ${colors.comment}
 type = internal/xkeyboard
 
 blacklist-0 = num lock
-label-layout = "%layout%"
-label-layout-background = ${colors.purple}
-label-layout-foreground = ${colors.background}
-label-layout-padding = 2
-label-layout-margin-left = 1
+label-layout = " %layout%"
+label-layout-foreground = ${colors.purple}
+label-layout-padding = 1
 
-label-indicator-background = ${colors.red}
-label-indicator-foreground = ${colors.background}
-label-indicator-padding = 2
-label-indicator-margin-left = 0
+label-indicator-foreground = ${colors.red}
 
 ; vim:ft=dosini

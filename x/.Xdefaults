@@ -1,8 +1,63 @@
-#include ".Xresources.d/colors/dracula"
+!#include ".Xresources.d/colors/dracula"
 
-!!!!!!!!!
-! URxvt !
-!!!!!!!!!
+! Base16 Material Darker
+! Scheme: Nate Peterson
+
+#define base00 #212121
+#define base01 #303030
+#define base02 #353535
+#define base03 #4a4a4a
+#define base04 #b2ccd6
+#define base05 #eeffff
+#define base06 #eeffff
+#define base07 #ffffff
+#define base08 #f07178
+#define base09 #f78c6c
+#define base0A #ffcb6b
+#define base0B #c3e88d
+#define base0C #89ddff
+#define base0D #82aaff
+#define base0E #c792ea
+#define base0F #ff5370
+
+#define base00a #f2212121
+#define alpha #00000000
+
+#define background_opacity 95
+
+*foreground:   base05
+*background:   base00
+*cursorColor:  base05
+
+*color0:       base00
+*color1:       base08
+*color2:       base0B
+*color3:       base0A
+*color4:       base0D
+*color5:       base0E
+*color6:       base0C
+*color7:       base05
+
+*color8:       base03
+*color9:       base08
+*color10:      base0B
+*color11:      base0A
+*color12:      base0D
+*color13:      base0E
+*color14:      base0C
+*color15:      base07
+
+! Note: colors beyond 15 might not be loaded (e.g., xterm, urxvt),
+! use 'shell' template to set these if necessary
+*color16:      base09
+*color17:      base0F
+*color18:      base01
+*color19:      base02
+*color20:      base04
+*color21:      base06
+
+!----------------------------
+
 
 ! General settings
 URxvt*saveline:         15000
@@ -14,15 +69,17 @@ URxvt.scrollBar: 0
 URxvt.cursorBlink: 1
 
 ! Geometry
-URxvt.geometry: 		92x16
+URxvt.geometry: 	102x22
 
 ! Clipboard
-URxvt.perl-ext-common: default,clipboard
-URxvt.keysym.Shift-Control-C: perl:clipboard:copy
-URxvt.keysym.Shift-Control-V: perl:clipboard:paste
+!URxvt.perl-ext-common: default,clipboard
+!URxvt.keysym.Shift-Control-C: perl:clipboard:copy
+!URxvt.keysym.Shift-Control-V: perl:clipboard:paste
 
 ! Font
-URxvt.font: xft:Iosevka Nerd Font Mono:size=11, xft:Symbola:size=13
+URxvt.font        :xft:scientifica:size=9
+URxvt.boldFont    :xft:scientifica:italic:size=9
+URxvt.italicFont  :xft:scientifica:italic:size=9
 URxvt.letterSpace: 0
 URxvt*lineSpace: 0
 
@@ -42,7 +99,11 @@ URxvt.internalBorder:  18
 !urxvt*shading: 10
 
 urxvt*depth: 32
-! URxvt.background: [95]#09090d
+#ifdef background_opacity
+URxvt*background:   [background_opacity]base00
+#else
+URxvt*background:   base00
+#endif
 
 ! Map CTRL + arrow keys
 URxvt.keysym.Control-Up:   \033[1;5A
@@ -52,7 +113,7 @@ URxvt.keysym.Control-Right:    \033[1;5C
 
 ! Font rendering
 Xft.autohint: 0
-Xft.dpi: 92
+Xft.dpi: 96
 Xft.antialias: 1
 Xft.hinting: true
 Xft.hintstyle: hintslight
@@ -66,27 +127,37 @@ Xft.lcdfilter: lcddefault
 
 ! Enable the extended coloring options
 rofi.color-enabled: true
+rofi.modi:  run,window,emoji:~/.bin/rofimoji,ssh
+rofi.sidebar-mode:  true
 
-!                  bg       border   separator
-rofi.color-window: #282A36, #50FA7B, #282A36
+!                     bg       fg       bg-alt   hl-bg    hl-fg
+rofi.color-window:    base00a, base00a, alpha, alpha, alpha
+rofi.color-normal:    alpha, base03 , alpha, alpha, base06
+rofi.color-active:    alpha, base0B , alpha, alpha, base06
+rofi.color-urgent:    alpha, base03 , alpha, alpha, base06
 
-!                  bg       fg       bg-alt   hl-bg    hl-fg
-rofi.color-normal: #282A36, #F8F8F2, #282A36, #50FA7B, #282A36
-rofi.color-active: #F1FA8C, #282A36, #F1FA8C, #BD93F9, #282A36
-rofi.color-urgent: #FF5555, #F8F8F2, #FF5555, #FF6E67, #F8F8F2
-
-rofi.terminal: termite
-rofi.ssh-client: ssh
-rofi.ssh-command: {terminal} -e "{ssh-client} {host}"
-rofi.run-shell-command:	{terminal} -e "{cmd}"
+rofi.fake-transparency: true
 rofi.hide-scrollbar: true
-rofi.font: Iosevka Nerd Font Mono 11
+rofi.font: scientifica 9
 rofi.separator-style: none
 rofi.scrollbar-width: 0
+
 rofi.location: 1
 rofi.yoffset: 40
 rofi.xoffset: 24
 rofi.padding: 18
-rofi.lines: 12 
+rofi.lines: 9
+rofi.eh: 2
 rofi.width: 400
-rofi.bw: 3
+rofi.bw: 0
+
+rofi.terminal:             urxvt 
+rofi.ssh-client:           ssh
+rofi.ssh-command:          {terminal} -e {ssh-client} {host}
+rofi.run-command:          {cmd}
+rofi.run-shell-command:    {terminal} -e {cmd}
+rofi.disable-history:      false
+rofi.levenshtein-sort:     false
+rofi.case-sensitive:       false
+rofi.auto-select:          false
+rofi.parse-hosts:          false

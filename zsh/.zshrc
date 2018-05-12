@@ -30,7 +30,7 @@ zplug "zsh-users/zsh-history-substring-search"
 zplug "zsh-users/zsh-completions"
 zplug "laurenkt/zsh-vimto"
 zplug "paulmelnikow/zsh-startup-timer"
-zplug "lib/nvm", from:oh-my-zsh
+# zplug "lib/nvm", from:oh-my-zsh
 
 
 
@@ -120,7 +120,7 @@ zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path ~/.zsh/cache
 
 # Calculator
-autoload zcalc
+# autoload zcalc
 
 # Keybindings
 # bindkey "^[[A" history-beginning-search-backward
@@ -139,3 +139,8 @@ eval "$(keychain --eval --agents gpg,ssh --quiet)"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Base 16
+BASE16_SHELL_SET_BACKGROUND=false
+BASE16_SHELL=$HOME/.config/base16-shell/
+[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"

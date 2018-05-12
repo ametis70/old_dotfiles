@@ -1,6 +1,6 @@
 [[ -f ~/.Xdefaults ]] && xrdb -merge -I $HOME ~/.Xdefaults
 
-export TERMINAL=termite
+export TERMINAL=urxvt
 export EDITOR=nvim
 
 dbus-update-activation-environment --systemd DISPLAY

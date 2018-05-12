@@ -6,14 +6,14 @@
 set $mod Mod4
 
 # Font 
-font pango: Iosevka Nerd Font Mono 11
+font pango: scientifica 9
 
 # Titles
 for_window [class="^.*"] title_format " %title"
 
-#############
+##############
 # Workspaces #
-#############
+##############
 
 set $ws1  "1"
 set $ws2  "2"
@@ -33,25 +33,27 @@ set $ws10 "10"
 set_from_resource $background background #282c34
 set_from_resource $foreground foreground #282c34
 
-set_from_resource $darkblack color0 #282c34
-set_from_resource $black color8 #3e4454
-set_from_resource $darkred color1 #e06c75
-set_from_resource $red color9 #be5046
-set_from_resource $darkgreen color2 #98c370
-set_from_resource $green color10 #98c370
-set_from_resource $darkblue color4 #61afef
-set_from_resource $blue color12 #61afef
-set_from_resource $darkmagenta color5 #c678dd
-set_from_resource $magenta color13 #c678dd
-set_from_resource $darkcyan color6 #56b6c2
-set_from_resource $cyan color14 #56b6c2
-set_from_resource $darkwhite color7 #abb2bf
-set_from_resource $white color15 #5c6370
+set_from_resource $lightblack color8 #282c34
+set_from_resource $black color0 #3e4454
+set_from_resource $lightred color9 #e06c75
+set_from_resource $red color1 #be5046
+set_from_resource $lightgreen color10 #98c370
+set_from_resource $green color2 #98c370
+set_from_resource $lightyellow color12 #98c370
+set_from_resource $yellow color3 #98c370
+set_from_resource $lightblue color12 #61afef
+set_from_resource $blue color4 #61afef
+set_from_resource $lightmagenta color13 #c678dd
+set_from_resource $magenta color5 #c678dd
+set_from_resource $lightcyan color14 #56b6c2
+set_from_resource $cyan color6 #56b6c2
+set_from_resource $lightwhite color15 #abb2bf
+set_from_resource $white color7 #5c6370
 
 #		        		BORDER		BACKGROUND	TEXT		INDICATOR
-client.focused			$green		$green		$background $yellow
+client.focused			$green		$green		$background $green
 client.unfocused		$background	$background	$foreground	$background
-client.focused_inactive	$darkwhite  $darkwhite	$foreground	$darkwhite
+client.focused_inactive	$yellow     $yellow     $background $yellow
 client.urgent			$red		$red		$foreground $red
 
 ################
@@ -69,7 +71,7 @@ floating_modifier $mod
 
 # Start dmenu
 # bindsym $mod+d exec dmenu_run
-bindsym $mod+Shift+d exec "dmenu_run -h 24 -x 12 -y 10 -w 1342 -fn 'Iosevka Nerd Font Mono-11' -nb '$background' -sb '$green' -nf '$foreground' -sf '$background'"
+# bindsym $mod+Shift+d exec "dmenu_run -h 24 -x 12 -y 10 -w 1342 -fn 'Iosevka Nerd Font Mono-11' -nb '$background' -sb '$green' -nf '$foreground' -sf '$background'"
 
 # Change focus
 bindsym $mod+h focus left
@@ -141,8 +143,10 @@ bindsym $mod+c exec --no-startup-id chromium
 
 # Rofi
 bindsym $mod+d exec --no-startup-id rofi -show run 
-bindsym $mod+Shift+p exec --no-startup-id ~/.bin/rofi-passmenu
+bindsym $mod+Shift+Tab exec --no-startup-id rofi -show window 
+bindsym $mod+Shift+s exec --no-startup-id rofi -show ssh
 bindsym $mod+Shift+e exec --no-startup-id ~/.bin/rofi-emoji
+bindsym $mod+Shift+p exec --no-startup-id ~/.bin/rofi-passmenu
 
 ##############
 # Workspaces #
@@ -165,7 +169,7 @@ bindsym $mod+0 workspace $ws10
 bindsym $mod+Tab workspace back_and_forth
 
 # Move workspace one monitor to the right
-bindsym $mod+Shift+Tab move workspace to output right
+# bindsym $mod+Shift+Tab move workspace to output right
 
 # Move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace number $ws1
@@ -205,8 +209,8 @@ assign [class="^TelegramDesktop$"] → $ws4
 assign [class="^cura$"] → $ws6
 assign [class="^inkscape$"] → $ws6
 assign [class="^Inkscape$"] → $ws6
-assign [class="^darktable$"] → $ws6
 assign [class="^Darktable$"] → $ws6
+assign [class="^darktable$"] → $ws6
 assign [class="^gimp$"] → $ws6
 assign [class="^Gimp$"] → $ws6
 assign [class="^krita$"] → $ws6
@@ -221,6 +225,7 @@ assign [title="^Steam$"] → $ws9
 for_window [class="^Steam$" title="^Steam - News"] floating enable 
 for_window [class="^Steam$" title="^Friends$"] floating enable 
 for_window [class="^Steam$" title="- Chat$"] floating enable 
+for_window [class="^Steam$" title="- event started$"] floating enable 
 
 #############
 # Autostart #
@@ -230,7 +235,7 @@ exec $HOME/.bin/fehbg $HOME/Pictures/wallpapers/simpledesktops/v17-pascal-nosenz
 exec $HOME/.bin/setxkbmap 
 
 exec dunst 
-exec compton --config $HOME/.config/compton/compton.conf
+exec_always compton --config $HOME/.config/compton/compton.conf
 exec pcmanfm -d 
 exec discord
 exec telegram-desktop
@@ -317,7 +322,7 @@ bindsym XF86MonBrightnessDown exec xbacklight -2
 ###########
 
 # Borders 
-for_window [class="^.*"] border pixel 3
+for_window [class="^.*"] border pixel 0
 
 # Set inner/outer gaps
 gaps inner 12

@@ -7,9 +7,10 @@ call plug#begin('~/.local/share/nvim/plugged')
 "Plug 'joshdick/onedark.vim'
 "Plug 'rakr/vim-one'
 Plug 'arcticicestudio/nord-vim'
-Plug 'dracula/vim', { 'as': 'dracula' }
+"Plug 'dracula/vim', { 'as': 'dracula' }
+"Plug 'NerdyPepper/agila.vim' 
+Plug 'chriskempson/base16-vim'
 "Plug 'cocopon/iceberg.vim'
-
 Plug 'gioele/vim-autoswap' "Requires wmctrl
 Plug 'sheerun/vim-polyglot'
 Plug 'othree/yajs.vim'
@@ -19,7 +20,7 @@ Plug 'styled-components/vim-styled-components'
 Plug 'itchyny/lightline.vim'
 Plug 'itchyny/lightline-powerful'
 Plug 'Valloric/YouCompleteMe'
-Plug 'ryanoasis/vim-devicons'
+" Plug 'ryanoasis/vim-devicons'
 Plug 'vim-syntastic/syntastic'
 " Plug 'vim-airline/vim-airline'
 Plug 'sjl/gundo.vim'
@@ -35,17 +36,20 @@ Plug 'lervag/vimtex'
 
 call plug#end()
 
+
 " Enable detection, plugins and indenting in one step
 filetype plugin indent on
 
 " Syntax highlighting
-set termguicolors
+" set termguicolors
 let g:polyglot_disabled = ['js']
 syntax on
 let g:nord_italic_comments = 1
-colorscheme dracula
-" hi Normal ctermbg=none
-" hi NonText ctermbg=none
+" source ~/.local/share/nvim/plugged/agila.vim/agila.vim
+let base16colorspace=256  " Access colors present in 256 colorspace
+colorscheme base16-default-dark 
+hi Normal ctermbg=none
+hi NonText ctermbg=none
 
 " Tabs and Identation
 set expandtab
@@ -125,14 +129,15 @@ let g:lightline = {
    	\ }
 \ }
 
-function! MyFiletype()
-  	return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft') : ''
-endfunction
+" Devicons
+"function! MyFiletype()
+"""""""""  	return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft') : ''
+"endfunction
 
-function! MyFileformat()
-  	return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : ''
-endfunction
-  			\ }
+"function! MyFileformat()
+"  	return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : ''
+"endfunction
+"  			\ }
 
 
 " Plugins
