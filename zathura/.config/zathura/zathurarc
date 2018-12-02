@@ -18,7 +18,7 @@ set guioptions "s"
 
 # Colors and font
 
-set font "Source Code Pro Bold 18"
+set font "Dina 10"
 
 set default-bg                  "#212121"
 set default-fg                  "#eeffff"

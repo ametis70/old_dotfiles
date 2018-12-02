@@ -6,7 +6,7 @@
 set $mod Mod4
 
 # Font 
-font pango: Source Code Pro Semibold 10
+font pango: Dina 10
 
 # Titles
 for_window [class="^.*"] title_format " %title"

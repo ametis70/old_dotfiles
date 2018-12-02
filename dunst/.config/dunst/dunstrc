@@ -13,7 +13,7 @@
     frame_width = 0
     sort = yes
     idle_threshold = 120
-    font = Source Code Pro Semibold 10
+    font = Dina 9
     line_height = 0
     markup = full
     format = "%s\n%b"
@@ -47,19 +47,19 @@
     context = ctrl+shift+period
 
 [urgency_low]
-    background = "#2E3440"
-    foreground = "#D8DEE9" 
-    frame_color = "#2E3440"
+    background = "#212121"
+    foreground = "#eeffff"
+    frame_color = "#212121"
     timeout = 4
 
 [urgency_normal]
-    background = "#2E3440"
-    foreground = "#D8DEE9" 
-    frame_color = "#2E3440"
+    background = "#212121"
+    foreground = "#eeffff"
+    frame_color = "#212121"
     timeout = 8
 
 [urgency_critical]
-    background = "#BF616A"
-    foreground = "#2E3440"
-    frame_color = "#E06C75"
+    background = "#f07178"
+    foreground = "#eeffff"
+    frame_color = "#f07178"
     timeout = 0
