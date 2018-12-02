@@ -1,5 +1,0 @@
-#!/bin/sh
-
-# Give all write permission to change brightness. Run as root or service.
-
-chmod a+w /sys/class/backlight/intel_backlight/brightness

@@ -7,24 +7,21 @@ set adjust-open "best-fit"
 # One page per row by default
 set pages-per-row 1
 
-#stop at page boundries
+# Stop at page boundries
 set scroll-page-aware "true"
 set smooth-scroll "true"
 set scroll-full-overlap 0.01
 
-#zoom settings
+# Zoom settings
 set zoom-min 10
 set guioptions "s"
 
 # Colors and font
 
-set font "Iosevka Nerd Font Mono 11"
+set font "Source Code Pro Bold 18"
 
-# Base16 Superfluous Dark
-# Author: Ian Mancini (https://github.com/ianmethyst)
-
-set default-bg                  "#282A36"
-set default-fg                  "#F8F8F2"
+set default-bg                  "#212121"
+set default-fg                  "#eeffff"
 
 set statusbar-bg                "#424450"
 set statusbar-fg                "#F8F8F2"
@@ -50,8 +47,8 @@ set completion-fg               "#F8F8F2"
 set completion-highlight-bg     "#50FA7B"
 set completion-highlight-fg     "#282A36"
 
-set recolor-lightcolor          "#F8F8F2"
-set recolor-darkcolor           "#282A36"
+set recolor-lightcolor          "#eeffff"
+set recolor-darkcolor           "#212121"
 
 set recolor                     "false"
 set recolor-keephue             "false"

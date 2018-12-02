@@ -6,7 +6,7 @@
 set $mod Mod4
 
 # Font 
-font pango: scientifica 9
+font pango: Source Code Pro Semibold 10
 
 # Titles
 for_window [class="^.*"] title_format " %title"
@@ -126,14 +126,14 @@ bindsym $mod+Shift+c reload
 # Restart i3 inplace (preserves your layout/session, can be used to upgrde i3)
 bindsym $mod+Shift+r restart
 
+# Lock
+bindsym $mod+Shift+x exec $HOME/.bin/lock
+
 # Program shortcuts
 
 # Scrot
 bindsym --release Print exec $HOME/.bin/scrot
 bindsym --release Shift+Print exec $HOME/.bin/scrot-area 
-
-#bindsym Print exec escrotum --clipboard --select --selection-delay 50 $screenshot_file
-#bindsym Shift+Print exec escrotum --clipboard --select --selection-delay 50 $screenshot_file
 
 # pcmanfm 
 bindsym $mod+p exec --no-startup-id pcmanfm -n
@@ -145,7 +145,7 @@ bindsym $mod+c exec --no-startup-id chromium
 bindsym $mod+d exec --no-startup-id rofi -show run 
 bindsym $mod+Shift+Tab exec --no-startup-id rofi -show window 
 bindsym $mod+Shift+s exec --no-startup-id rofi -show ssh
-bindsym $mod+Shift+e exec --no-startup-id ~/.bin/rofi-emoji
+bindsym $mod+Shift+e exec --no-startup-id rofi -show emoji
 bindsym $mod+Shift+p exec --no-startup-id ~/.bin/rofi-passmenu
 
 ##############
@@ -222,24 +222,39 @@ assign [class="^libreoffice-writer$"] → $ws6
 
 assign [class="^Steam$"] → $ws9
 assign [title="^Steam$"] → $ws9
-for_window [class="^Steam$" title="^Steam - News"] floating enable 
-for_window [class="^Steam$" title="^Friends$"] floating enable 
-for_window [class="^Steam$" title="- Chat$"] floating enable 
-for_window [class="^Steam$" title="- event started$"] floating enable 
+for_window [class="^Unity$"] floating enable 
+for_window [title="^Unity - Unity"] floating disable
+for_window [class="^Steam$"] floating enable 
+for_window [class="^Steam$" title="^Steam$"] floating disable 
+
+for_window [class="^pavucontrol$"] floating enable 
+for_window [class="^Pavucontrol$"] floating enable 
+for_window [class="^arandr$"] floating enable 
+for_window [class="^Arandr$"] floating enable 
 
 #############
 # Autostart #
 #############
 
-exec $HOME/.bin/fehbg $HOME/Pictures/wallpapers/simpledesktops/v17-pascal-nosenzo.png 
-exec $HOME/.bin/setxkbmap 
+exec_always $HOME/.bin/fehbg $HOME/Pictures/wall.png
 
-exec dunst 
+exec_always $HOME/.bin/setxkbmap 
 exec_always compton --config $HOME/.config/compton/compton.conf
+exec_always $HOME/.bin/conky
+
+
+exec xautolock -time 15 -locker ~/.bin/lock -corners 0-00
+exec dunst 
 exec pcmanfm -d 
 exec discord
 exec telegram-desktop
 exec steam
+exec nm-applet
+# exec blueman-applet
+# exec pasystray 
+exec redshift-gtk 
+exec cbatticon BAT0 -l 25 -r 10 
+# exec clipit
 
 #########
 # Modes #
@@ -317,6 +332,9 @@ bindsym XF86AudioStop exec mpc stop
 bindsym XF86MonBrightnessUp exec xbacklight +2
 bindsym XF86MonBrightnessDown exec xbacklight -2 
 
+bindsym XF86Display exec arandr
+bindsym XF86TouchpadToggle exec pavucontrol
+
 ###########
 # i3-Gaps #
 ###########
@@ -333,4 +351,3 @@ gaps outer 0
 
 # Smart borders (draw borders around container only if it is not the only container on this workspace) 
 smart_borders on
-

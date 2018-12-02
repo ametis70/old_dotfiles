@@ -90,11 +90,12 @@ LS_COLORS='rs=0:di=01;34:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;3
 export LS_COLORS
 
 # Aliases
+alias s="sudo"
 alias ls="ls --color -F"
 alias ll="ls --color -lh"
-alias 'mkdir=mkdir -p'
-alias 'dmesg=dmesg --ctime'
-alias 'cd..=cd ..'
+alias mkdir='mkdir -p'
+alias dmesg='dmesg --ctime'
+alias cd..='cd ..'
 
 # Completion
 zmodload zsh/complist 
@@ -132,15 +133,20 @@ bindkey '^[[B' history-substring-search-down
 # Environment #
 ###############
 
+# fzf
+export FZF_DEFAULT_COMMAND='ag -g ""'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
 # Keychain
 eval "$(keychain --eval --agents gpg,ssh --quiet)"
 
 # NVM 
+export NODE_OPTIONS="--max-old-space-size=1024"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # Base 16
-BASE16_SHELL_SET_BACKGROUND=false
-BASE16_SHELL=$HOME/.config/base16-shell/
-[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
+#BASE16_SHELL_SET_BACKGROUND=false
+#BASE16_SHELL=$HOME/.config/base16-shell/
+#[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
