@@ -1,14 +1,13 @@
+let g:python_host_prog = '/usr/bin/python2'
+let g:python3_host_prog = '/usr/bin/python'
 " Syntax
 filetype plugin indent on
 let g:polyglot_disabled = ['js', 'latex']
 syntax on
 
 " Colorscheme
-let g:nord_italic = 1
-let g:nord_italic_comments = 1
-let g:nord_underline = 1
-let g:nord_cursor_line_number_background = 1
-colorscheme base16 
+let base16colorspace=256
+colorscheme base16-default-dark
 
 " Tabs and Identation
 set expandtab

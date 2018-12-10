@@ -1,6 +1,5 @@
 [colors]
 transparency = #f2212121
-comment = ${xrdb:color8}
 background = ${xrdb:background}
 background-alt = ${xrdb:color8}
 foreground = ${xrdb:foreground}
@@ -21,25 +20,25 @@ monitor = ${env:MONITOR:eDP-1}
 wm-restack = true
 override-redirect = false
 width = 100%
-height = 24
+height = 28
 fixed-center = true
 
-background = ${colors.transparency}
+background = ${colors.background}
 foreground = ${colors.foreground}
-border-top-color = ${colors.transparency}
-border-bottom-color = ${colors.transparency}
+border-top-color = ${colors.background}
+border-bottom-color = ${colors.background}
 
-padding-left = 1
+padding-left = 0
 padding-right = 1
-border-bottom-size = 5
-border-top-size = 5
+border-bottom-size = 0
+border-top-size = 0
 
-font-0 = Dina:size=10:antialias=true;2
+font-0 = Misc Tamsyn:size=13:antialias=true;2
 font-1 = Wuncon Siji:size=9:antialias=true;2
 
 modules-left =  rofi i3 window
-modules-center = date 
-modules-right = wifi volume battery xkeyboard 
+modules-center = time 
+modules-right = cpu memory wifi volume battery xkeyboard 
 tray-position = 
 tray-background = ${colors.background-alt}
 tray-padding = 2
@@ -64,7 +63,7 @@ click-right = rofi -show window
 [module/window]
 type = internal/xwindow
 label =  %title%
-label-maxlen = 60
+label-maxlen = 50
 label-foreground = ${colors.foreground}
 label-margin = 1
 label-padding = 1
@@ -89,7 +88,7 @@ label-focused-foreground = ${colors.green}
 
 label-unfocused =  %icon%
 label-unfocused-padding= 1
-label-unfocused-foreground = ${colors.foreground-alt}
+label-unfocused-foreground = ${colors.background-alt}
 
 label-urgent = %icon%
 label-urgent-padding= 1
@@ -111,7 +110,6 @@ ws-icon-8 = 9;
 ws-icon-9 = 10;
 ws-icon-default = ?
 
-
 [module/wifi]
 type = internal/network
 interface = wlp3s0 
@@ -125,42 +123,55 @@ label-connected-foreground = ${colors.green}
 format-disconnected = <label-disconnected>
 label-disconnected = " DISCONNECTED"
 label-disconnected-padding = 1
-label-disconnected-foreground = ${colors.background}
+label-disconnected-foreground = ${colors.foreground}
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+label =  %percentage%%
+label-foreground = ${colors.cyan}
+label-padding= 1
+
+[module/memory]
+type = internal/memory
+interval = 2
+label=  %percentage_used%%
+label-foreground = ${colors.blue}
 
 [module/date]
 type = internal/date
 ;label = " %date%  %time%"
-label = "%date%"
+;label = "%date%"
+label =  %date%
 date = %m/%d
 time = %H:%M
 interval = 5
 
 label-padding = 0
-label-foreground = ${colors.comment}
+label-foreground = ${colors.white}
 
 [module/time]
 type = internal/date
-;label = " %date%  %time%"
 label = "%time%"
 date = %m/%d
 time = %H:%M
 interval = 5
 
 label-padding = 1
-label-foreground = ${colors.cyan}
+label-foreground = ${colors.foreground}
 
 [module/volume]
-type = internal/volume
+type = internal/pulseaudio
 
 format-volume = <label-volume>
 label-volume =  " %percentage%%"
 
 label-volume-foreground = ${colors.green}
-label-volume-padding = 1
+label-volume-padding-right = 1
 
 label-muted =   %percentage%%
 label-muted-foreground = ${colors.red}
-label-muted-padding = 1
+label-muted-padding-right = 1
 [module/battery]
 type = internal/battery
 full-at =  100
@@ -202,28 +213,28 @@ format-online-margin = 1
 format-online-background = ${colors.background}
 
 format-offline = <label-offline>
-format-offline-foreground = ${colors.comment}
+format-offline-foreground = ${colors.background-alt}
 format-offline-background = ${colors.background}
 format-offline-padding = 2 
 format-offline-margin = 1
 
 label-offline = "mpd is off"
-format-paused-foreground = ${colors.comment}
+format-paused-foreground = ${colors.background-alt}
 
 label-song-maxlen = 50
 label-song-ellipsis = true
 
-label-time-foreground = ${colors.comment}
+label-time-foreground = ${colors.background-alt}
 
 [module/xkeyboard]
 type = internal/xkeyboard
 
 blacklist-0 = num lock
-label-layout = " %layout%"
+;label-layout = " %layout%"
+label-layout = %layout%
 label-layout-foreground = ${colors.purple}
 label-layout-padding = 1
 
 label-indicator-foreground = ${colors.red}
 
 ; vim:ft=dosini
-

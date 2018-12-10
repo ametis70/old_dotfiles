@@ -7,28 +7,16 @@ let g:indent_guides_enable_on_vim_startup = 1
 
 " Deoplete
 let g:deoplete#enable_at_startup = 1
-call deoplete#custom#option('smart_case', v:true)
+let g:deoplete#num_processes = 1
 
-call deoplete#custom#option('sources', {
-		  \ '_': ['syntax', 'around', 'buffer', 'file', 'include', 'member'],
-      \ 'vim': ['vim'],
-      \ 'javascript': ['ternjs']
-      \})
+"call deoplete#custom#option('sources', {
+"		\ '_': ['buffer'],
+"		\ 'cpp': ['buffer', 'tag'],
+"		\})
 
-" Tern
-"let g:deoplete#sources#ternjs#filetypes = [
-"      \ 'javascript',
-"      \ 'javascript.jsx',
-"      \ 'jsx',
-"      \ 'vue',
-"      \ ]
-let g:deoplete#sources#ternjs#types = 1
-let g:deoplete#sources#ternjs#docs = 1
+let g:tern#command = ["tern"]
+let g:tern#arguments = ["--persistent"]
 
-
-" Clang
-let g:deoplete#sources#clang#libclang_path = '/usr/lib/libclang.so'
-let g:deoplete#sources#clang#clang_header = '/usr/lib/clang'
 
 " easy-tags
 let g:easytags_async = 1
@@ -76,7 +64,7 @@ autocmd! User GoyoLeave nested call <SID>goyo_leave()
 " Limelight
 let g:limelight_conceal_ctermfg = 7
 
-" tern_for_vim
-let g:tern#command = ["tern"]
-let g:tern#arguments = ["--persistent"]
-
+" neotex
+let g:neotex_enabled	= 1
+let g:tex_flavor = 'latex'
+let g:neotex_pdflatex_alternative	 = 'xelatex'

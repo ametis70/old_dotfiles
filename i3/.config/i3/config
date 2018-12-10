@@ -6,7 +6,7 @@
 set $mod Mod4
 
 # Font 
-font pango: Dina 10
+font pango: Dina 9
 
 # Titles
 for_window [class="^.*"] title_format " %title"
@@ -50,11 +50,11 @@ set_from_resource $cyan color6 #56b6c2
 set_from_resource $lightwhite color15 #abb2bf
 set_from_resource $white color7 #5c6370
 
-#		        		BORDER		BACKGROUND	TEXT		INDICATOR
-client.focused			$green		$green		$background $green
-client.unfocused		$background	$background	$foreground	$background
-client.focused_inactive	$yellow     $yellow     $background $yellow
-client.urgent			$red		$red		$foreground $red
+#                         BORDER      BACKGROUND   TEXT        INDICATOR
+client.focused            $green      $green       $background $green
+client.unfocused          $background $background  $foreground $background
+client.focused_inactive   $background $yellow      $background $background
+client.urgent             $red        $red         $foreground $red
 
 ################
 # Key Bindings #
@@ -237,10 +237,9 @@ for_window [class="^Arandr$"] floating enable
 #############
 
 exec_always $HOME/.bin/fehbg $HOME/Pictures/wall.png
-
 exec_always $HOME/.bin/setxkbmap 
-exec_always compton --config $HOME/.config/compton/compton.conf
-exec_always $HOME/.bin/conky
+#exec_always compton --config $HOME/.config/compton/compton.conf
+#exec_always $HOME/.bin/conky
 
 
 exec xautolock -time 15 -locker ~/.bin/lock -corners 0-00
@@ -264,19 +263,19 @@ exec cbatticon BAT0 -l 25 -r 10
 set $mode_resize resize
 bindsym $mod+r mode "$mode_resize"
 mode "$mode_resize" {
-        bindsym h resize shrink width 10 px or 10 ppt
-        bindsym j resize grow height 10 px or 10 ppt
-        bindsym k resize shrink height 10 px or 10 ppt
-        bindsym l resize grow width 10 px or 10 ppt
+  bindsym h resize shrink width 10 px or 10 ppt
+    bindsym j resize grow height 10 px or 10 ppt
+    bindsym k resize shrink height 10 px or 10 ppt
+    bindsym l resize grow width 10 px or 10 ppt
 
 # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+    bindsym Left resize shrink width 10 px or 10 ppt
+    bindsym Down resize grow height 10 px or 10 ppt
+    bindsym Up resize shrink height 10 px or 10 ppt
+    bindsym Right resize grow width 10 px or 10 ppt
 
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
 }
 
 # System Menu
@@ -284,12 +283,12 @@ set $sysmenu "[p]oweroff  re[b]oot  [h]ibernate  [s]uspend  [l]ogout"
 bindsym $mod+Delete      mode $sysmenu
 
 mode $sysmenu {
-    #    bindsym r         restart
-    bindsym l         exit
+#    bindsym r         restart
+  bindsym l         exit
     bindsym p         exec shutdown -P now
     bindsym b         exec shutdown -r now
-    bindsym s	      exec systemctl suspend
-    bindsym h	      exec systemctl hibernate
+    bindsym s       exec systemctl suspend
+    bindsym h       exec systemctl hibernate
     bindsym Return    mode "default"
     bindsym Escape    mode "default"
 }
@@ -340,10 +339,10 @@ bindsym XF86TouchpadToggle exec pavucontrol
 ###########
 
 # Borders 
-for_window [class="^.*"] border pixel 0
+for_window [class="^.*"] border pixel 2
 
 # Set inner/outer gaps
-gaps inner 12
+gaps inner 0
 gaps outer 0
 
 # Smart gaps (gaps used if only more than one container on the workspace)

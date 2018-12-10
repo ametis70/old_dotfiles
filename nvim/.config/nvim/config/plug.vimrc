@@ -1,8 +1,8 @@
 call plug#begin('~/.local/share/nvim/plugged')
 
-"Plug 'chriskempson/base16-vim'
+Plug 'chriskempson/base16-vim'
 "Plug 'joshdick/onedark.vim'
-Plug 'arcticicestudio/nord-vim'
+"Plug 'arcticicestudio/nord-vim'
 "Plug 'dylanaraps/crayon'
 
 "Plug 'vim-airline/vim-airline'
@@ -21,6 +21,7 @@ Plug 'styled-components/vim-styled-components'
 
 " Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
+" Plug 'pyarmak/vim-pandoc-live-preview'
 
 Plug 'junegunn/fzf.vim'
 Plug 'majutsushi/tagbar'
@@ -32,8 +33,10 @@ Plug 'xuyuanp/nerdtree-git-plugin'
 Plug 'airblade/vim-gitgutter'
 Plug 'nathanaelkane/vim-indent-guides'
 
-Plug 'lervag/vimtex'
+" Plug 'lervag/vimtex'
+Plug 'donRaphaco/neotex', { 'for': 'tex' }
 
+Plug 'mhinz/neovim-remote'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/neco-syntax'
 Plug 'Shougo/neoinclude.vim'

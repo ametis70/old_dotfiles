@@ -21,7 +21,7 @@
 #define base00a #f2212121
 #define alpha #00000000
 
-#define background_opacity 95
+#define background_opacity 100
 
 *foreground:   base05
 *background:   base00
@@ -74,9 +74,9 @@ URxvt.geometry: 	102x22
 !URxvt.keysym.Shift-Control-V: perl:clipboard:paste
 
 ! Font
-URxvt.font        :xft: Dina:size=10
-URxvt.boldFont    :xft: Dina:Bold:size=10
-URxvt.italicFont  :xft: Dina:Italic:size=10
+URxvt.font        :xft: Misc Tamsyn:size=10.5
+URxvt.boldFont    :xft: Misc Tamsyn:Bold:size=10.5
+URxvt.italicFont  :xft: Misc Tamsyn:Italic:size=10.5
 URxvt.letterSpace: 0
 URxvt*lineSpace: 0
 
@@ -88,6 +88,10 @@ URxvt.url-launcher: /usr/bin/chromium
 
 ! Border 
 URxvt.internalBorder:  18
+
+! Fade
+URxvt*fading:  30
+
 
 ! Transparency
 
@@ -133,9 +137,9 @@ rofi.color-normal:    alpha, base03 , alpha, alpha, base06
 rofi.color-active:    alpha, base0B , alpha, alpha, base06
 rofi.color-urgent:    alpha, base03 , alpha, alpha, base06
 
-rofi.fake-transparency: true
+rofi.fake-transparency: false
 rofi.hide-scrollbar: true
-rofi.font: Dina 10 
+rofi.font: Misc Tamsyn 10
 rofi.separator-style: none
 rofi.scrollbar-width: 0
 
